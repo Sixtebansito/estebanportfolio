@@ -1,0 +1,118 @@
+---
+import GitHub from "../assets/github.svg"
+import LinkButton from "./LinkButton.astro"
+import Plantas from "../assets/plantas.png"
+import emociones from "../assets/emociones.png"
+import car from "../assets/cardealer.png"
+import libros from "../assets/libros.png"
+
+const TAGS = {
+HTML: {
+    name: "HTML 5",
+    class: "bg-orange-500 text-white",  
+},
+TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-blue-500 text-white",
+},
+NODE: {
+    name: "Node.js",
+    class: "bg-green-500 text-white",
+},
+Express: {
+    name: "Express.js",
+    class: "bg-gray-800 text-white",
+},
+Django: {
+    name: "Django",
+    class: "bg-green-700 text-white",
+},
+Python:{
+    name:"Python",
+    class: "bg-yellow-500 text-white",
+},
+Javascript:{
+    name:"Javascript",
+    class: "bg-yellow-300 text-gray-800",
+},
+Postman:{
+    name:"Postman",
+    class: "bg-orange-700 text-white",
+
+}
+}
+const PROJECTS = [
+  {
+    title: "Aplicación de Carrito de Compras para Tienda de Plantas Online",
+    description:"Como proyecto final de desarrollo web con IBM, creé una plataforma que permite a los usuarios explorar y gestionar un catálogo de plantas de interior. El desarrollo se realizó íntegramente en el entorno virtual IBM Skills Network Labs, donde implementé la lógica necesaria para que los clientes puedan interactuar con la aplicación y administrar sus pedidos de forma intuitiva.",
+    github: "https://github.com/Sixtebansito/e-plantShopping",
+    image: Plantas.src,
+    tags: [TAGS.HTML, TAGS.TAILWIND, TAGS.Javascript],
+  },
+  {
+    title: "Aplicación Web de Reseñas de Concesionarios de Automóviles",
+    description:"Desarrollé esta aplicación como el proyecto final (Capstone Project) de la certificación Full Stack Cloud de IBM. Utilizando Python y Django para el backend, construí un sistema que permite visualizar y enviar reseñas de concesionarios. El proyecto destacó por la integración de microservicios y el despliegue en la nube mediante Red Hat OpenShift y Kubernetes en IBM Cloud",
+    image: car.src,
+    tags: [TAGS.HTML, TAGS.TAILWIND, TAGS.Django],
+  },
+    {
+    title: "Desarrollo de un Servicio Web RESTful para Gestión de Reseñas de Libros",
+    description:
+      "En este proyecto asumí el rol de desarrollador backend para diseñar un servicio API RESTful utilizando Node.js y Express.js. Implementé funcionalidades CRUD completas para la gestión de libros y calificaciones, integrando seguridad mediante autenticación JWT y manejo de sesiones. Además, utilicé programación asíncrona con Promises y Async/Await para garantizar que la plataforma soporte el acceso simultáneo de múltiples usuarios de manera eficiente",
+    github: "https://github.com/Sixtebansito/expressBookReviews",
+    image: libros.src,
+    tags: [TAGS.HTML, TAGS.TAILWIND, TAGS.NODE, TAGS.Express, TAGS.Postman],
+  },
+    {
+    title: "Detección de Emociones con Watson AI",
+    description:"Este proyecto consiste en el desarrollo de una aplicación avanzada que trasciende el análisis de sentimiento convencional al identificar emociones matizadas como alegría, tristeza e ira en textos. Al integrar las capacidades de Watson AI, la herramienta permite extraer información emocional profunda, lo cual es fundamental para optimizar sistemas de recomendación basados en inteligencia artificial, mejorar la empatía en chatbots y personalizar diversas aplicaciones digitales según el estado de ánimo del usuario",
+    github: "https://github.com/Sixtebansito/oaqjp-final-project-emb-ai",
+    image: emociones.src,
+    tags: [TAGS.HTML, TAGS.TAILWIND, TAGS.Python],
+  },
+]
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, github }) => (
+    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+  <div class="w-full md:w-1/2">
+    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+      <img src={image} alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"/>
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 md:max-w-lg">
+    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      {title}
+    </h3>
+    <div class="flex flex-wrap mt-2">
+      <ul class="flex flex-row mb-2 gap-x-2">
+          {tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+              >
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+      <footer class="flex items-end justify-start mt-4 gap-x-4">
+          {github && (
+            <LinkButton href={github}>
+              <GitHub class="size-6" />
+              Code
+              
+            </LinkButton>
+          )}
+        </footer>
+    </div>
+  </div>
+</article>
+    ))
+  }
+</div>
