@@ -1,118 +1,134 @@
 ---
-import GitHub from "../assets/github.svg"
 import LinkButton from "./LinkButton.astro"
-import Plantas from "../assets/plantas.png"
-import emociones from "../assets/Emociones.png"
 import car from "../assets/Cardealer.png"
-import libros from "../assets/libros.png"
+import Plantas from "../assets/plantas.png"
+import etrienImg from "../assets/etrien-preview.png" 
+import ticketnowImg from "../assets/ticketnow-preview.png"
 
 const TAGS = {
-HTML: {
-    name: "HTML 5",
-    class: "bg-orange-500 text-white",  
-},
-TAILWIND: {
+  ASTRO: {
+    name: "Astro",
+    class: "bg-[#23262F] text-white",
+    icon: `<svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 16.594v-.594a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v.594c0 .822 -.306 1.614 -.864 2.22l-1.01 1.094a3.9 3.9 0 0 1 -2.87 1.258h-8.512a3.9 3.9 0 0 1 -2.87 -1.258l-1.01 -1.094a3.109 3.109 0 0 1 -.864 -2.22z" /><path d="M12 12v-6.382a2.3 2.3 0 0 1 3.514 -1.95l1.644 1.012" /><path d="M12 12v-6.382a2.3 2.3 0 0 0 -3.514 -1.95l-1.644 1.012" /></svg>`,
+  },
+  TAILWIND: {
     name: "Tailwind CSS",
-    class: "bg-blue-500 text-white",
-},
-NODE: {
-    name: "Node.js",
-    class: "bg-green-500 text-white",
-},
-Express: {
-    name: "Express.js",
-    class: "bg-gray-800 text-white",
-},
-Django: {
+    class: "bg-[#003159] text-white",
+    icon: `<svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -2 -1.968 -4.288 -1.968zm-5.334 6.333c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -2 -1.968 -4.288 -1.968z" /></svg>`,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-[#23272F] text-[#149ECA]",
+    icon: `<svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c5.523 0 10 -1.79 10 -4c0 -1.363 -1.704 -2.566 -4.306 -3.289" /><path d="M17.694 15.289c2.602 -.723 4.306 -1.926 4.306 -3.289c0 -2.21 -4.477 -4 -10 -4c-5.523 0 -10 1.79 -10 4c0 1.363 1.704 2.566 4.306 3.289" /><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M8.058 16.634c-.878 -1.637 -1.011 -3.518 -.361 -5.029c1.01 -2.35 4.14 -3.125 6.993 -1.732c2.853 1.393 4.348 4.425 3.338 6.775c-.65 1.51 -2.186 2.378 -3.97 2.457" /><path d="M15.942 7.366c.878 1.637 1.011 3.518 .361 5.029c-1.01 2.35 -4.14 3.125 -6.993 1.732c-2.853 -1.393 -4.348 -4.425 -3.338 -6.775c.65 -1.51 2.186 -2.378 3.97 -2.457" /></svg>`,
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "bg-[#F7DF1E] text-white hover:bg-[#E5C918]",
+    icon: `<svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z" /><path d="M7.5 8h3v8l-2 -1" /><path d="M16.5 8h-2.5a.5 .5 0 0 0 -.5 .5v3a.5 .5 0 0 0 .5 .5h1.423a.5 .5 0 0 1 .495 .57l-.418 2.93l-2 .5" /></svg>`,
+  },
+  DJANGO: {
     name: "Django",
-    class: "bg-green-700 text-white",
-},
-Python:{
-    name:"Python",
-    class: "bg-yellow-500 text-white",
-},
-Javascript:{
-    name:"Javascript",
-    class: "bg-yellow-300 text-gray-800",
-},
-Postman:{
-    name:"Postman",
-    class: "bg-orange-700 text-white",
+    class: "bg-[#092E20] text-white",
+    icon: `<svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.146 1.054v14.475c-1.391.229-2.76.34-4.103.34-1.636 0-3.003-.306-4.103-.918-1.096-.613-1.884-1.464-2.362-2.553C.1 11.31 0 10.04 0 8.583V1.054h2.894v7.712c0 1.25.138 2.22.414 2.91.276.689.722 1.22 1.336 1.595.613.377 1.401.564 2.363.564 1.156 0 2.457-.143 3.904-.429V1.054h.235zm11.316.326c-.307.245-.583.567-.827.965-.245.398-.445.864-.598 1.395-.152.531-.229 1.127-.229 1.788v6.763c0 1.052-.107 1.948-.321 2.688-.214.74-.531 1.34-.952 1.8-.42.46-.967.815-1.64 1.066-.673.25-1.488.375-2.443.375-1.533 0-3.155-.244-4.868-.734v-3.085c1.455.52 2.871.78 4.249.78 1.424 0 2.502-.336 3.233-1.01.73-.674 1.095-1.685 1.095-3.033V1.38h2.834zm-8.86 16.92c.69 0 1.25-.192 1.678-.575.43-.383.644-.882.644-1.494 0-.612-.214-1.11-.644-1.493-.428-.383-.988-.574-1.678-.574-.69 0-1.25.191-1.678.574-.429.383-.644.881-.644 1.493 0 .612.215 1.111.644 1.494.428.383.988.575 1.678.575z"/></svg>`,
+  },
+}
 
-}
-}
-const PROJECTS = [
+const PROYECTOS = [
+  {
+    title: "ETRIEN S.A.S. - Arquitectura Corporativa B2B",
+    description: "Plataforma corporativa B2B con un diseño minimalista y profesional. Lideré la arquitectura de soluciones integrando componentes interactivos para optimizar la gestión y los procesos internos de la empresa.",
+    link: "https://enlace-a-etrien.com", 
+    github: "https://github.com/sixtebansito/etrien", 
+    image: etrienImg.src,
+    tags: [TAGS.REACT, TAGS.TAILWIND]
+  },
+  {
+    title: "TicketNow - E-commerce de Entradas",
+    description: "Plataforma de venta de tickets orientada a la Generación Z con un diseño 'Dark First'. Desarrollada con enfoque en alta conversión, implementando una lógica de carrito de compras robusta y transiciones fluidas.",
+    link: "https://enlace-a-ticketnow.com", 
+    github: "https://github.com/sixtebansito/ticketnow", 
+    image: ticketnowImg.src, 
+    tags: [TAGS.ASTRO, TAGS.JAVASCRIPT, TAGS.TAILWIND]
+  },
   {
     title: "Aplicación de Carrito de Compras para Tienda de Plantas Online",
     description:"Como proyecto final de desarrollo web con IBM, creé una plataforma que permite a los usuarios explorar y gestionar un catálogo de plantas de interior. El desarrollo se realizó íntegramente en el entorno virtual IBM Skills Network Labs, donde implementé la lógica necesaria para que los clientes puedan interactuar con la aplicación y administrar sus pedidos de forma intuitiva.",
     github: "https://github.com/Sixtebansito/e-plantShopping",
     image: Plantas.src,
-    tags: [TAGS.HTML, TAGS.TAILWIND, TAGS.Javascript],
+    tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.JAVASCRIPT],
   },
   {
     title: "Aplicación Web de Reseñas de Concesionarios de Automóviles",
     description:"Desarrollé esta aplicación como el proyecto final (Capstone Project) de la certificación Full Stack Cloud de IBM. Utilizando Python y Django para el backend, construí un sistema que permite visualizar y enviar reseñas de concesionarios. El proyecto destacó por la integración de microservicios y el despliegue en la nube mediante Red Hat OpenShift y Kubernetes en IBM Cloud",
     image: car.src,
-    tags: [TAGS.HTML, TAGS.TAILWIND, TAGS.Django],
-  },
-    {
-    title: "Desarrollo de un Servicio Web RESTful para Gestión de Reseñas de Libros",
-    description:
-      "En este proyecto asumí el rol de desarrollador backend para diseñar un servicio API RESTful utilizando Node.js y Express.js. Implementé funcionalidades CRUD completas para la gestión de libros y calificaciones, integrando seguridad mediante autenticación JWT y manejo de sesiones. Además, utilicé programación asíncrona con Promises y Async/Await para garantizar que la plataforma soporte el acceso simultáneo de múltiples usuarios de manera eficiente",
-    github: "https://github.com/Sixtebansito/expressBookReviews",
-    image: libros.src,
-    tags: [TAGS.HTML, TAGS.TAILWIND, TAGS.NODE, TAGS.Express, TAGS.Postman],
-  },
-    {
-    title: "Detección de Emociones con Watson AI",
-    description:"Este proyecto consiste en el desarrollo de una aplicación avanzada que trasciende el análisis de sentimiento convencional al identificar emociones matizadas como alegría, tristeza e ira en textos. Al integrar las capacidades de Watson AI, la herramienta permite extraer información emocional profunda, lo cual es fundamental para optimizar sistemas de recomendación basados en inteligencia artificial, mejorar la empatía en chatbots y personalizar diversas aplicaciones digitales según el estado de ánimo del usuario",
-    github: "https://github.com/Sixtebansito/oaqjp-final-project-emb-ai",
-    image: emociones.src,
-    tags: [TAGS.HTML, TAGS.TAILWIND, TAGS.Python],
-  },
+    tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.DJANGO],
+  }
 ]
 ---
 
 <div class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, title, description, tags, github }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img src={image} alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"/>
-    </div>
-  </div>
+    PROYECTOS.map(({ image, title, description, tags, link, github }) => (
+      <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+        
+        <div class="w-full md:w-1/2">
+          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+            <img 
+              alt={`Captura de pantalla del proyecto ${title}`} 
+              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" 
+              loading="lazy" 
+              src={image} 
+            />
+          </div>
+        </div>
 
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
-          {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                {tag.name}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
-          {github && (
-            <LinkButton href={github}>
-              <GitHub class="size-6" />
-              Code
-              
-            </LinkButton>
-          )}
-        </footer>
-    </div>
-  </div>
-</article>
+        <div class="w-full md:w-1/2 md:max-w-lg">
+          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+            {title}
+          </h3>
+          
+          <div class="flex flex-wrap mt-2">
+            <ul class="flex flex-row mb-2 gap-x-2">
+              {tags.map((tag) => (
+                <li>
+                  <span class={`flex items-center gap-x-2 rounded-full text-xs font-semibold ${tag.class} py-1.5 px-3 border border-white/10 dark:bg-gray-800/50 backdrop-blur-sm transition hover:scale-105`}>
+                    <Fragment set:html={tag.icon} />
+                    {tag.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            
+            <div class="mt-2 text-gray-700 dark:text-gray-400/90 text-pretty">
+              {description}
+            </div>
+            
+            <footer class="flex items-end justify-start mt-6 gap-x-4">
+              {github && (
+                <LinkButton href={github}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                  </svg>
+                  Código
+                </LinkButton>
+              )}
+              {link && (
+                <LinkButton href={link}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+                    <path d="M11 13l9 -9" />
+                    <path d="M15 4h5v5" />
+                  </svg>
+                  Preview
+                </LinkButton>
+              )}
+            </footer>
+          </div>
+        </div>
+        
+      </article>
     ))
   }
 </div>
