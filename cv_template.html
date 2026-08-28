@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danny Esteban Muñoz Velasquez - CV</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact;
+            color: #1f2937;
+        }
+
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            margin: 20px auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+        }
+
+        /* Left Column */
+        .sidebar {
+            width: 35%;
+            background-color: #111111;
+            color: #f3f4f6;
+            padding: 40px 25px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h2 {
+            color: #39b54a;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .contact-item {
+            font-size: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item a {
+            color: #f3f4f6;
+            text-decoration: none;
+        }
+
+        .skill-item {
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .education-item, .cert-item {
+            margin-bottom: 15px;
+        }
+        
+        .education-item h3, .cert-item h3 {
+            font-size: 13px;
+            font-weight: 600;
+            margin: 0 0 3px 0;
+            color: #fff;
+        }
+
+        .education-item p, .cert-item p {
+            font-size: 12px;
+            margin: 0;
+            color: #9ca3af;
+        }
+
+        /* Right Column */
+        .main-content {
+            width: 65%;
+            padding: 40px 35px;
+            box-sizing: border-box;
+        }
+
+        .header-name {
+            font-size: 32px;
+            font-weight: 800;
+            color: #111111;
+            margin: 0 0 5px 0;
+            line-height: 1.1;
+        }
+
+        .header-title {
+            font-size: 16px;
+            color: #39b54a;
+            font-weight: 600;
+            margin: 0 0 20px 0;
+        }
+
+        .profile-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .main-content h2 {
+            font-size: 18px;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #39b54a;
+            padding-bottom: 5px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .job {
+            margin-bottom: 20px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .job-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .job-date {
+            font-size: 12px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .job-company {
+            font-size: 13px;
+            color: #39b54a;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .job-desc {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #4b5563;
+            margin: 0;
+        }
+
+        .project {
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .project-tech {
+            font-size: 12px;
+            color: #39b54a;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #4b5563;
+            margin: 3px 0 0 0;
+        }
+
+        /* Print adjustments */
+        @media print {
+            body { background-color: white; }
+            .a4-page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                min-height: 100vh;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="a4-page">
+        <!-- Sidebar (Left Column) -->
+        <div class="sidebar">
+            <h2 style="margin-top: 0;">Contacto</h2>
+            <div class="contact-item">📧 dannygghhm@gmail.com</div>
+            <div class="contact-item">📱 0983958430</div>
+            <div class="contact-item">📍 Quito, Ecuador</div>
+            <div class="contact-item">🎂 06/01/2003</div>
+            
+            <h2>Educación</h2>
+            <div class="education-item">
+                <h3>Desarrollo de Software</h3>
+                <p>PUCE (2025 - Actualidad)</p>
+            </div>
+            <div class="education-item">
+                <h3>Licenciatura en Negocios Internacionales</h3>
+                <p>UDLA (2014 - 2020)</p>
+            </div>
+            <div class="education-item">
+                <h3>Bachiller en Ciencias</h3>
+                <p>U.E. San Luis Gonzaga (2014 - 2020)</p>
+            </div>
+
+            <h2>Certificaciones</h2>
+            <div class="cert-item">
+                <h3>Full Stack Web Developer</h3>
+                <p>IBM (2025)</p>
+            </div>
+            <div class="cert-item">
+                <h3>Azure Cloud Services</h3>
+                <p>Microsoft (2025)</p>
+            </div>
+            <div class="cert-item">
+                <h3>Google Cloud Fundamentals</h3>
+                <p>Google (2025)</p>
+            </div>
+            <div class="cert-item">
+                <h3>Django Application Dev</h3>
+                <p>IBM (2025)</p>
+            </div>
+            <div class="cert-item">
+                <h3>FCE C1.3 (Inglés)</h3>
+                <p>EF Education First (2018)</p>
+            </div>
+
+            <h2>Hard Skills</h2>
+            <div class="skill-item"><span>HTML5, CSS3, JS</span></div>
+            <div class="skill-item"><span>React, Tailwind CSS</span></div>
+            <div class="skill-item"><span>Node.js, Express</span></div>
+            <div class="skill-item"><span>Python, Django</span></div>
+            <div class="skill-item"><span>SQL, MySQL, MongoDB</span></div>
+            <div class="skill-item"><span>Git, GitHub</span></div>
+
+            <h2>Idiomas</h2>
+            <div class="skill-item"><span>Español</span> <span>Nativo</span></div>
+            <div class="skill-item"><span>Inglés</span> <span>Avanzado (C1)</span></div>
+            <div class="skill-item"><span>Francés/Portugués</span> <span>Básico</span></div>
+            
+            <h2>Disponibilidad</h2>
+            <div class="skill-item" style="color: #9ca3af;">Tiempo completo o parcial.<br>Presencial o Remoto.<br>Incorporación Inmediata.</div>
+        </div>
+
+        <!-- Main Content (Right Column) -->
+        <div class="main-content">
+            <h1 class="header-name">Danny Esteban<br>Muñoz Velasquez</h1>
+            <div class="header-title">Lic. en Negocios Internacionales & Estudiante de Software</div>
+            
+            <p class="profile-text">
+                Profesional versátil con formación en negocios internacionales y certificación reciente como Full Stack Developer por IBM. Integro el pensamiento estratégico con la creación de soluciones digitales. Experiencia en ventas, importaciones, innovación y gestión administrativa en entornos nacionales e internacionales. Proactivo, organizado y orientado a resultados, con facilidad para adaptarme a entornos multiculturales y dinámicos.
+            </p>
+
+            <h2>Experiencia Laboral</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Asistente de Gerencia</span>
+                    <span class="job-date">06/2024 - Presente</span>
+                </div>
+                <div class="job-company">MilamorTruck S.A</div>
+                <p class="job-desc">Logística, gestión de caja, asistencia administrativa, organización de eventos, cotización de fletes, pago de salarios y facturación.</p>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Gestor de Cobranzas / Pasante</span>
+                    <span class="job-date">2023 - 12/2024</span>
+                </div>
+                <div class="job-company">Netlife / Megadatos S.A</div>
+                <p class="job-desc">Administración de contratos, facturación, call center, administración de carteras, estrategias de retención y servicio al cliente.</p>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Pasante en Innovación</span>
+                    <span class="job-date">02/2024 - 06/2024</span>
+                </div>
+                <div class="job-company">Tracklink</div>
+                <p class="job-desc">Contacto con leads, seguimiento, asignación de reuniones, ventas y creación de campañas y artes publicitarios.</p>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Asistente de Importaciones</span>
+                    <span class="job-date">01/2022 - 06/2022</span>
+                </div>
+                <div class="job-company">Saix Services S.A.S</div>
+                <p class="job-desc">Búsqueda de información arancelaria, cotizaciones de importación y apoyo en ventas, marketing y Community Management.</p>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Housekeeping Attendant</span>
+                    <span class="job-date">06/2022 - 10/2022</span>
+                </div>
+                <div class="job-company">Hilton Sandestin Beach Golf Resort & Spa</div>
+                <p class="job-desc">Mantenimiento de habitaciones, logística de conferencias y planificación de ventas en entorno internacional.</p>
+            </div>
+
+            <h2>Proyectos Técnicos</h2>
+            
+            <div class="project">
+                <div class="project-title">TicketNow <span class="project-tech">| Full Stack</span></div>
+                <p class="project-desc">Sistema integral de gestión de tickets y atención al cliente, enfocado en optimizar el flujo de soporte.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-title">Catfeteria & Etrien <span class="project-tech">| Frontend & Landing Pages</span></div>
+                <p class="project-desc">Aplicación interactiva para cafetería temática y desarrollo de landing pages modernas con sliders, animaciones y diseño responsivo.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-title">Sistema de Telemetría <span class="project-tech">| Monitoreo de Datos</span></div>
+                <p class="project-desc">Desarrollo de un sistema para la captura y visualización de datos de telemetría en tiempo real.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-title">Reseñas de Automóviles <span class="project-tech">| Python, Django, IBM Cloud</span></div>
+                <p class="project-desc">Capstone Project de IBM. Desarrollo full stack y despliegue en Red Hat OpenShift/Kubernetes.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-title">API REST Tienda de Libros & Cursos <span class="project-tech">| Node.js, Express, Django</span></div>
+                <p class="project-desc">Servicio CRUD con autenticación JWT para gestionar reseñas de libros y un panel educativo de exámenes.</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
