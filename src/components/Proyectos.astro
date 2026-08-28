@@ -50,7 +50,16 @@ const TAGS = {
   },
 }
 
-const PROYECTOS = [
+interface Proyecto {
+  title: string;
+  description: string;
+  image: string;
+  tags: { name: string; class: string; icon: string }[];
+  github?: string;
+  link?: string;
+}
+
+const PROYECTOS: Proyecto[] = [
   {
     title: "ETRIEN S.A.S. - Arquitectura Corporativa B2B",
     description: "Plataforma corporativa B2B con un diseño minimalista y profesional. Lideré la arquitectura de soluciones integrando componentes interactivos para optimizar la gestión y los procesos internos de la empresa.",
