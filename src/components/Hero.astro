@@ -1,12 +1,15 @@
 ---
 import Social from "../components/Social.astro"
+import FloatingIcons from "./FloatingIcons.astro"
+import Image from "../assets/foto.jpg"
 ---
 <section id="inicio" class="relative flex flex-col justify-center min-h-screen px-6 overflow-hidden bg-[#111111]">
-  <!-- Subtle Background Pattern / Overlay -->
-  <div class="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-[#111111] to-[#111111]"></div>
+  <!-- Floating Icons Animation -->
+  <FloatingIcons />
   
-  <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mt-16 md:mt-0">
-    <div class="flex flex-col gap-6 max-w-4xl">
+  <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mt-16 md:mt-0 gap-12">
+    <!-- Left Content -->
+    <div class="flex flex-col gap-6 max-w-2xl">
       <span class="glint-subheading reveal">Bienvenido a mi mundo</span>
       
       <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-tight reveal" style="animation-delay: 200ms;">
@@ -29,6 +32,16 @@ import Social from "../components/Social.astro"
       <div class="mt-12 reveal" style="animation-delay: 600ms;">
         <Social />
       </div>
+    </div>
+
+    <!-- Right Content: Profile Picture -->
+    <div class="relative group reveal" style="animation-delay: 800ms;">
+      <div class="absolute inset-0 transition-opacity duration-500 rounded-full opacity-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-xl group-hover:opacity-60 animate-pulse"></div>
+      <img
+        class="relative rounded-full shadow-2xl size-56 md:size-72 lg:size-80 object-cover border-4 border-white/10 transition-transform duration-500 group-hover:scale-105"
+        src={Image.src}
+        alt="Foto de Esteban"
+      />
     </div>
   </div>
 
@@ -53,10 +66,9 @@ import Social from "../components/Social.astro"
   document.getElementById('download-cv')?.addEventListener('click', function() {
     const btn = this as HTMLButtonElement;
     const originalText = btn.innerHTML;
-    btn.innerText = 'Generando PDF...';
+    btn.innerHTML = 'Generando...';
     btn.disabled = true;
-
-    btn.style.display = 'none';
+    btn.style.opacity = '0.5';
 
     const element = document.querySelector('main');
     
@@ -64,7 +76,7 @@ import Social from "../components/Social.astro"
       margin:       0.5,
       filename:     'Esteban_Munoz_CV.pdf',
       image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2, useCORS: true, windowWidth: 1024 },
+      html2canvas:  { scale: 2, useCORS: true, windowWidth: 1024, ignoreElements: (element) => element.tagName === 'ASTRO-DEV-TOOLBAR' },
       jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
     };
     
@@ -72,7 +84,13 @@ import Social from "../components/Social.astro"
     html2pdf().set(opt).from(element).save().then(() => {
       btn.innerHTML = originalText;
       btn.disabled = false;
-      btn.style.display = 'flex';
+      btn.style.opacity = '1';
+    }).catch((err) => {
+      console.error("Error al generar PDF: ", err);
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      alert("Hubo un error al generar el PDF. Asegúrate de probarlo en producción (GitHub Pages), ya que Astro Dev Toolbar puede interferir en desarrollo local.");
     });
   });
 </script>
