@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://sixtebansito.github.io',
-  base: 'estebanportfolio', 
+  base: '/estebanportfolio', 
   vite: {
     plugins: [tailwindcss()]
   }

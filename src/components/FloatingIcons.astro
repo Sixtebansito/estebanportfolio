@@ -1,0 +1,44 @@
+---
+// Iconos de ejemplo para flotar en el fondo
+const icons = [
+  {
+    name: "Python",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 2c-4.66 0 -8.5 3.31 -8.96 7.73l-.04 .27v4l.03 .24c.33 2.65 2.14 4.8 4.71 5.48l.26 .06v-3.78c0 -1.65 1.34 -3 3 -3h5v-5c0 -3.31 -2.69 -6 -6 -6zm-1 4a1 1 0 1 1 0 2a1 1 0 0 1 0 -2zm10 4h-5v5c0 3.31 2.69 6 6 6c4.66 0 8.5 -3.31 8.96 -7.73l.04 -.27v-4l-.03 -.24c-.33 -2.65 -2.14 -4.8 -4.71 -5.48l-.26 -.06v3.78c0 1.65 -1.34 3 -3 3h-5z"/></svg>`,
+    className: "top-10 left-[10%] animate-[float_6s_ease-in-out_infinite]"
+  },
+  {
+    name: "Astro",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)"><path d="M11.146 1.054v14.475c-1.391.229-2.76.34-4.103.34-1.636 0-3.003-.306-4.103-.918-1.096-.613-1.884-1.464-2.362-2.553C.1 11.31 0 10.04 0 8.583V1.054h2.894v7.712c0 1.25.138 2.22.414 2.91.276.689.722 1.22 1.336 1.595.613.377 1.401.564 2.363.564 1.156 0 2.457-.143 3.904-.429V1.054h.235zm11.316.326c-.307.245-.583.567-.827.965-.245.398-.445.864-.598 1.395-.152.531-.229 1.127-.229 1.788v6.763c0 1.052-.107 1.948-.321 2.688-.214.74-.531 1.34-.952 1.8-.42.46-.967.815-1.64 1.066-.673.25-1.488.375-2.443.375-1.533 0-3.155-.244-4.868-.734v-3.085c1.455.52 2.871.78 4.249.78 1.424 0 2.502-.336 3.233-1.01.73-.674 1.095-1.685 1.095-3.033V1.38h2.834zm-8.86 16.92c.69 0 1.25-.192 1.678-.575.43-.383.644-.882.644-1.494 0-.612-.214-1.11-.644-1.493-.428-.383-.988-.574-1.678-.574-.69 0-1.25.191-1.678.574-.429.383-.644.881-.644 1.493 0 .612.215 1.111.644 1.494.428.383.988.575 1.678.575z"/></svg>`,
+    className: "top-40 right-[15%] animate-[float_7s_ease-in-out_infinite_reverse]"
+  },
+  {
+    name: "React",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0" /><path d="M12 12c-5.523 0 -10 -2.462 -10 -5.5s4.477 -5.5 10 -5.5s10 2.462 10 5.5s-4.477 5.5 -10 5.5z" transform="rotate(45 12 12)" /><path d="M12 12c-5.523 0 -10 -2.462 -10 -5.5s4.477 -5.5 10 -5.5s10 2.462 10 5.5s-4.477 5.5 -10 5.5z" transform="rotate(-45 12 12)" /></svg>`,
+    className: "bottom-20 left-[20%] animate-[float_8s_ease-in-out_infinite]"
+  },
+  {
+    name: "Tailwind",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.622 1.968c2.489 0 4.043 -1.222 4.666 -3.667c-.933 1.223 -2.023 1.68 -3.266 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.999 -1.968 -4.622 -1.968z" /><path d="M5 14.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.622 1.968c2.489 0 4.043 -1.222 4.666 -3.667c-.933 1.223 -2.023 1.68 -3.266 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.999 -1.968 -4.622 -1.968z" /></svg>`,
+    className: "top-[60%] right-[10%] animate-[float_5s_ease-in-out_infinite_reverse]"
+  }
+];
+---
+
+<div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+  <div class="absolute w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] top-[-10%] left-[-10%] mix-blend-screen animate-pulse"></div>
+  <div class="absolute w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] bottom-[-10%] right-[-10%] mix-blend-screen animate-[pulse_4s_ease-in-out_infinite]"></div>
+
+  {icons.map(icon => (
+    <div class={`absolute ${icon.className} opacity-30 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] blur-[1px]`}>
+      <Fragment set:html={icon.svg} />
+    </div>
+  ))}
+</div>
+
+<style is:global>
+  @keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+</style>
