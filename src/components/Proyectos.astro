@@ -4,7 +4,9 @@ import car from "../assets/Cardealer.png"
 import Plantas from "../assets/plantas.png"
 import etrienImg from "../assets/etrien-preview.png" 
 import ticketnowImg from "../assets/ticketnow-preview.png"
-
+import fundamentosImg from "../assets/fundamentos.jpg"
+import catfeteriaImg from "../assets/catfeteria.jpg"
+import telemetriaImg from "../assets/telemetria.jpg"
 const TAGS = {
   ASTRO: {
     name: "Astro",
@@ -31,6 +33,21 @@ const TAGS = {
     class: "bg-[#092E20] text-white",
     icon: `<svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.146 1.054v14.475c-1.391.229-2.76.34-4.103.34-1.636 0-3.003-.306-4.103-.918-1.096-.613-1.884-1.464-2.362-2.553C.1 11.31 0 10.04 0 8.583V1.054h2.894v7.712c0 1.25.138 2.22.414 2.91.276.689.722 1.22 1.336 1.595.613.377 1.401.564 2.363.564 1.156 0 2.457-.143 3.904-.429V1.054h.235zm11.316.326c-.307.245-.583.567-.827.965-.245.398-.445.864-.598 1.395-.152.531-.229 1.127-.229 1.788v6.763c0 1.052-.107 1.948-.321 2.688-.214.74-.531 1.34-.952 1.8-.42.46-.967.815-1.64 1.066-.673.25-1.488.375-2.443.375-1.533 0-3.155-.244-4.868-.734v-3.085c1.455.52 2.871.78 4.249.78 1.424 0 2.502-.336 3.233-1.01.73-.674 1.095-1.685 1.095-3.033V1.38h2.834zm-8.86 16.92c.69 0 1.25-.192 1.678-.575.43-.383.644-.882.644-1.494 0-.612-.214-1.11-.644-1.493-.428-.383-.988-.574-1.678-.574-.69 0-1.25.191-1.678.574-.429.383-.644.881-.644 1.493 0 .612.215 1.111.644 1.494.428.383.988.575 1.678.575z"/></svg>`,
   },
+  PYTHON: {
+    name: "Python",
+    class: "bg-[#3776AB] text-white",
+    icon: `<svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 2c-4.66 0 -8.5 3.31 -8.96 7.73l-.04 .27v4l.03 .24c.33 2.65 2.14 4.8 4.71 5.48l.26 .06v-3.78c0 -1.65 1.34 -3 3 -3h5v-5c0 -3.31 -2.69 -6 -6 -6zm-1 4a1 1 0 1 1 0 2a1 1 0 0 1 0 -2zm10 4h-5v5c0 3.31 2.69 6 6 6c4.66 0 8.5 -3.31 8.96 -7.73l.04 -.27v-4l-.03 -.24c-.33 -2.65 -2.14 -4.8 -4.71 -5.48l-.26 -.06v3.78c0 1.65 -1.34 3 -3 3h-5z"/></svg>`,
+  },
+  HTML: {
+    name: "HTML",
+    class: "bg-[#E34F26] text-white",
+    icon: `<svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z" /><path d="M15.5 8h-7l.5 4h6l-.5 3.5l-2.5 .75l-2.5 -.75l-.1 -1.5" /></svg>`,
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-[#1572B6] text-white",
+    icon: `<svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z" /><path d="M8.5 8h7l-.5 4h-6l.5 3.5l2.5 .75l2.5 -.75l.1 -1.5" /></svg>`,
+  },
 }
 
 const PROYECTOS = [
@@ -38,6 +55,7 @@ const PROYECTOS = [
     title: "ETRIEN S.A.S. - Arquitectura Corporativa B2B",
     description: "Plataforma corporativa B2B con un diseño minimalista y profesional. Lideré la arquitectura de soluciones integrando componentes interactivos para optimizar la gestión y los procesos internos de la empresa.",
     image: etrienImg.src,
+
     tags: [TAGS.REACT, TAGS.TAILWIND]
   },
   {
@@ -58,6 +76,24 @@ const PROYECTOS = [
     description:"Desarrollé esta aplicación como el proyecto final (Capstone Project) de la certificación Full Stack Cloud de IBM. Utilizando Python y Django para el backend, construí un sistema que permite visualizar y enviar reseñas de concesionarios. El proyecto destacó por la integración de microservicios y el despliegue en la nube mediante Red Hat OpenShift y Kubernetes en IBM Cloud",
     image: car.src,
     tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.DJANGO],
+  },
+  {
+    title: "Análisis de Telemetría API",
+    description: "Proyecto de análisis de datos para correlacionar la latencia de una API con los usuarios concurrentes, utilizando regresión lineal y curve fitting polinómico con Scikit-Learn y Pandas.",
+    image: telemetriaImg.src,
+    tags: [TAGS.PYTHON],
+  },
+  {
+    title: "Catfeteria - Esteban Muñoz",
+    description: "Plataforma web para una cafetería temática de gatos y un centro de adopciones. Cuenta con menús, perfiles de mascotas y gestión de adopciones.",
+    image: catfeteriaImg.src,
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
+  },
+  {
+    title: "Fundamentos de Lógica",
+    description: "Scripts en Python para la comprobación de paridad de números enteros y validación de signos positivos o negativos.",
+    image: fundamentosImg.src,
+    tags: [TAGS.PYTHON],
   }
 ]
 ---

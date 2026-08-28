@@ -67,6 +67,17 @@ import background from "../assets/background.svg"
         animation-range: 0 500px;
       }
 
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       @keyframes blur {
         to {
           backdrop-filter: blur(20px);
@@ -107,5 +118,19 @@ import background from "../assets/background.svg"
         }
       }
     </style>
+
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
   </body>
 </html>

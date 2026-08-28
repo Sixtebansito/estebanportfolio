@@ -25,6 +25,40 @@ import Social from "../components/Social.astro"
     <p class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"><strong>Licenciado en Negocios Internacionales y Estudiante de Desarrollo de software</strong> </p>
       <p class="text-xl"> de Quito, Ecuador</p>
     <Social></Social>
+    <button id="download-cv" class="mt-4 px-6 py-2 text-white bg-yellow-500 hover:bg-yellow-600 font-semibold rounded-full shadow-lg transition-transform transform hover:scale-105 flex items-center gap-2">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
+      Descargar CV
+    </button>
   </div>
   </nav>
 </div>
+
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  document.getElementById('download-cv')?.addEventListener('click', function() {
+    const btn = this;
+    const originalText = btn.innerHTML;
+    btn.innerText = 'Generando PDF...';
+    btn.disabled = true;
+
+    // Temporalmente ocultamos elementos que no deben ir en el CV como el propio botón
+    btn.style.display = 'none';
+
+    const element = document.querySelector('main');
+    
+    const opt = {
+      margin:       0.5,
+      filename:     'Esteban_Munoz_CV.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, useCORS: true, windowWidth: 1024 },
+      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+    
+    // eslint-disable-next-line no-undef
+    html2pdf().set(opt).from(element).save().then(() => {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      btn.style.display = 'flex';
+    });
+  });
+</script>
