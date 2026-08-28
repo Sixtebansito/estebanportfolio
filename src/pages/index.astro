@@ -1,46 +1,49 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import "../styles/global.css"
-import AboutMe from "../components/AboutMe.astro"
-import Briefcase from "../assets/suitcase.svg"
-import CodeIcon from "../assets/code.svg"
+import About from "../components/About.astro"
 import Experience from "../components/Experience.astro"
-import ProfileCheck from "../assets/check.svg"
 import Projects from "../components/Proyectos.astro"
-import SectionContainer from "../components/SectionContainer.astro"
 import Hero from "../components/Hero.astro"
-import TitleSection from "../components/TitleSection.astro"
 ---
 
 <Layout>
-  <main class="px-4">
-    <SectionContainer class="py-16 md:py-36">
-      <Hero>
-      <slot/>-- 
-    </Hero>
-    </SectionContainer>
-    <div class="space-y-24">
-    <SectionContainer id="experiencia">
-      <TitleSection>
-        <Briefcase class="size-8" />
-        Experiencia laboral
-      </TitleSection>
-      <Experience />
-    </SectionContainer>
-    <SectionContainer id="proyectos">
-      <TitleSection>
-        <CodeIcon class="size-7" />
-        Proyectos
-      </TitleSection>
-      <Projects />
-    </SectionContainer>
-    <SectionContainer id="sobre-mi">
-      <TitleSection>
-        <ProfileCheck class="size-8" />
-        Sobre mí
-      </TitleSection>
-      <AboutMe />
-    </SectionContainer>
-  </div>
+  <main class="w-full">
+    <!-- Inicio -->
+    <Hero />
+
+    <!-- Sobre Mí -->
+    <About />
+
+    <!-- Experiencia -->
+    <section id="experiencia" class="py-32 px-6 bg-[#111111]">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-16 reveal">
+          <span class="glint-subheading">Trayectoria</span>
+          <h2 class="text-4xl md:text-5xl font-bold text-white mt-2">
+            Mi experiencia <span class="text-accent">laboral.</span>
+          </h2>
+        </div>
+        <div class="reveal" style="animation-delay: 200ms;">
+          <Experience />
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos -->
+    <Projects />
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-32 px-6 bg-[#151515] text-center">
+      <div class="max-w-4xl mx-auto reveal">
+        <span class="glint-subheading">Contáctame</span>
+        <h2 class="text-5xl md:text-7xl font-bold text-white mt-4 mb-8">
+          ¿Tienes un proyecto en mente? <br/> <span class="text-accent">Hagámoslo realidad.</span>
+        </h2>
+        <a href="mailto:emunozc25@gmail.com" class="inline-block px-10 py-5 text-white uppercase tracking-widest text-sm font-bold bg-accent hover:bg-accent-hover transition-colors rounded-sm shadow-xl">
+          Envíame un mensaje
+        </a>
+      </div>
+    </section>
   </main>
 </Layout>

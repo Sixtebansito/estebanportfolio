@@ -1,10 +1,30 @@
-<header 
-class="flex justify-center items-center py-5 w-full xl:w-280 mx-auto">
-    <nav class="flex flex-row gap-x-10 opacity-75">
-        <a href="#inicio" class="font-bold hover:text-yellow-500">Inicio</a>
-        <a href="#experiencia" class="font-bold hover:text-yellow-500">Experiencia</a>
-        <a href="#proyectos" class="font-bold hover:text-yellow-500">Proyectos</a>
-        <a href="#sobre-mi" class="font-bold hover:text-yellow-500">Sobre mí</a>
-        <a href="#contacto" class="font-bold hover:text-yellow-500">Contacto</a>
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 bg-transparent py-5">
+  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <!-- Logo -->
+    <a href="#inicio" class="text-2xl font-black tracking-widest uppercase text-white hover:text-accent transition-colors">
+      Esteban<span class="text-accent">.</span>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="hidden md:flex flex-row gap-x-8">
+      <a href="#inicio" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors">Inicio</a>
+      <a href="#sobre-mi" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors">Sobre mí</a>
+      <a href="#proyectos" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors">Proyectos</a>
+      <a href="#contacto" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors">Contacto</a>
     </nav>
+  </div>
 </header>
+
+<script>
+  // Add background color to header when scrolling
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.remove('bg-transparent', 'py-5');
+      header?.classList.add('bg-[#111111]', 'py-4', 'shadow-lg');
+    } else {
+      header?.classList.add('bg-transparent', 'py-5');
+      header?.classList.remove('bg-[#111111]', 'py-4', 'shadow-lg');
+    }
+  });
+</script>

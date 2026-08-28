@@ -1,0 +1,53 @@
+---
+import Image from "../assets/foto.jpg"
+import Badge from "../components/Badge.astro"
+---
+
+<section id="sobre-mi" class="relative py-32 px-6 bg-[#151515]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+    
+    <!-- Text Content -->
+    <div class="flex-1 space-y-8 reveal">
+      <div>
+        <span class="glint-subheading">Sobre Mí</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mt-2">
+          Permíteme <span class="text-accent">presentarme.</span>
+        </h2>
+      </div>
+
+      <p class="text-lg md:text-xl text-gray-400 leading-relaxed">
+        <strong class="text-white font-semibold">Licenciado en Negocios Internacionales y Estudiante de Desarrollo de Software</strong> de Quito, Ecuador. Me apasiona resolver problemas complejos y crear experiencias digitales que impacten positivamente a los usuarios.
+      </p>
+
+      <p class="text-lg text-gray-400 leading-relaxed">
+        Mi experiencia combinando negocios y tecnología me permite entender los proyectos no solo desde la perspectiva del código, sino también desde el valor que aportan al mercado y a las personas. Siempre estoy buscando aprender nuevas tecnologías y enfrentar nuevos desafíos.
+      </p>
+    </div>
+
+    <!-- Image Content -->
+    <div class="flex-1 flex justify-center md:justify-end reveal" style="animation-delay: 200ms;">
+      <div class="relative group">
+        <!-- Glow Effect behind image -->
+        <div class="absolute -inset-4 bg-accent/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        
+        <img
+          class="relative w-72 h-72 md:w-96 md:h-96 rounded-full object-cover border-4 border-[#222] shadow-2xl transition-transform duration-500 group-hover:scale-105 grayscale hover:grayscale-0"
+          src={Image.src}
+          alt="Foto de Esteban"
+        />
+        
+        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 z-10">
+          <a
+            href="https://www.linkedin.com/in/esteban-munoz-/"
+            target="_blank"
+            rel="noopener"
+            class="flex items-center transition md:justify-center md:hover:scale-110"
+          >
+            <Badge>Disponible para trabajar</Badge>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
