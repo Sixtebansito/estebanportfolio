@@ -20,10 +20,10 @@ import Image from "../assets/foto.jpg"
       </h1>
       
       <div class="flex flex-col sm:flex-row gap-6 mt-8 reveal" style="animation-delay: 400ms;">
-        <button id="download-cv" class="px-8 py-4 text-white uppercase tracking-widest text-sm font-bold bg-accent hover:bg-accent-hover transition-colors rounded-sm flex items-center justify-center gap-3">
+        <a href="cv.pdf" download="Esteban_Munoz_CV.pdf" class="px-8 py-4 text-white uppercase tracking-widest text-sm font-bold bg-accent hover:bg-accent-hover transition-colors rounded-sm flex items-center justify-center gap-3">
           <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
           Descargar CV
-        </button>
+        </a>
         <a href="#sobre-mi" class="px-8 py-4 text-white uppercase tracking-widest text-sm font-bold border-2 border-white/20 hover:border-white transition-colors rounded-sm flex items-center justify-center">
           Más sobre mí
         </a>
@@ -60,37 +60,3 @@ import Image from "../assets/foto.jpg"
     100% { transform: translateY(200%); }
   }
 </style>
-
-<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script>
-  document.getElementById('download-cv')?.addEventListener('click', function() {
-    const btn = this as HTMLButtonElement;
-    const originalText = btn.innerHTML;
-    btn.innerHTML = 'Generando...';
-    btn.disabled = true;
-    btn.style.opacity = '0.5';
-
-    const element = document.querySelector('main');
-    
-    const opt = {
-      margin:       0.5,
-      filename:     'Esteban_Munoz_CV.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2, useCORS: true, windowWidth: 1024, ignoreElements: (element) => element.tagName === 'ASTRO-DEV-TOOLBAR' },
-      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-    };
-    
-    // @ts-ignore
-    html2pdf().set(opt).from(element).save().then(() => {
-      btn.innerHTML = originalText;
-      btn.disabled = false;
-      btn.style.opacity = '1';
-    }).catch((err) => {
-      console.error("Error al generar PDF: ", err);
-      btn.innerHTML = originalText;
-      btn.disabled = false;
-      btn.style.opacity = '1';
-      alert("Hubo un error al generar el PDF. Asegúrate de probarlo en producción (GitHub Pages), ya que Astro Dev Toolbar puede interferir en desarrollo local.");
-    });
-  });
-</script>
