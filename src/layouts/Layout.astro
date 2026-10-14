@@ -2,33 +2,90 @@
 import "@fontsource-variable/onest"
 import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro"
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Esteban Muñoz | Desarrollador Web Full Stack & Estratega Digital",
+  description = "Portafolio profesional de Esteban Muñoz. Licenciado en Negocios Internacionales y Desarrollador Web Full Stack. Creación de páginas web, e-commerce y aplicaciones digitales modernas en Quito, Ecuador."
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://sixtebansito.github.io");
+const ogImageURL = new URL("servicios-web.jpg", Astro.site || "https://sixtebansito.github.io").toString();
 ---
 
 <!doctype html>
-<html lang="es" class="dark">
+<html lang="es" class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}favicon.svg`} />
+    <link rel="alternate icon" href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}favicon.ico`} />
+    
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Esteban Muñoz" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="es_EC" />
+    <meta property="og:site_name" content="Portafolio Esteban Muñoz" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <meta name="theme-color" content="#111111" />
     <meta name="generator" content={Astro.generator} />
-    <title>Portafolio Esteban</title>
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Esteban Muñoz",
+      "jobTitle": "Full Stack Web Developer & International Business Specialist",
+      "url": "https://sixtebansito.github.io/estebanportfolio",
+      "email": "dannygghhm@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Quito",
+        "addressCountry": "EC"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/esteban-munoz-/",
+        "https://github.com/Sixtebansito"
+      ]
+    })} />
   </head>
 
-  <body class="relative text-white bg-[#111111] font-sans selection:bg-accent selection:text-white">
+  <body class="relative text-white bg-[#111111] font-sans selection:bg-accent selection:text-white antialiased">
     <Header />
     <slot />
     <Footer />
 
     <style is:global>
       :root {
-        --color-accent: #39b54a; /* Glint Green Accent */
+        --color-accent: #39b54a; /* Glint Emerald Accent */
         --color-accent-hover: #2d933a;
         --color-bg: #111111;
         --color-bg-alt: #151515;
       }
 
       html {
-        font-family: "Onest Variable", system-ui, sans-serif;
+        font-family: "Onest Variable", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         scroll-behavior: smooth;
       }
 
@@ -41,33 +98,33 @@ import Footer from "../components/Footer.astro"
         overscroll-behavior: none;
       }
 
-      /* Utilidades de Tailwind personalizadas via CSS */
+      /* Utilidades de colores de acento */
       .bg-accent { background-color: var(--color-accent); }
       .text-accent { color: var(--color-accent); }
       .border-accent { border-color: var(--color-accent); }
       .hover\:bg-accent-hover:hover { background-color: var(--color-accent-hover); }
 
-      /* Glint Heading Styles */
+      /* Subtítulos destacados estilo Glint */
       .glint-subheading {
         color: var(--color-accent);
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         text-transform: uppercase;
-        letter-spacing: 0.15em;
-        font-weight: 700;
+        letter-spacing: 0.18em;
+        font-weight: 800;
         margin-bottom: 0.5rem;
-        display: block;
+        display: inline-block;
       }
 
-      /* Custom Scrollbar */
+      /* Barra de desplazamiento personalizada */
       ::-webkit-scrollbar {
-        width: 10px;
+        width: 8px;
       }
       ::-webkit-scrollbar-track {
         background: #111111;
       }
       ::-webkit-scrollbar-thumb {
-        background: #333;
-        border-radius: 5px;
+        background: #2b2b2b;
+        border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
         background: var(--color-accent);
@@ -79,10 +136,12 @@ import Footer from "../components/Footer.astro"
         }
       }
 
+      /* Scroll reveal animaciones suaves */
       .reveal {
         opacity: 0;
-        transform: translateY(30px);
-        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(24px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
       }
 
       .reveal.active {
@@ -98,7 +157,7 @@ import Footer from "../components/Footer.astro"
             entry.target.classList.add('active');
           }
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.08 });
 
       document.querySelectorAll('.reveal').forEach((el) => {
         observer.observe(el);

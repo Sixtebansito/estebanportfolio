@@ -1,0 +1,180 @@
+---
+import serviciosImg from "../assets/servicios-web.jpg"
+---
+
+<section id="servicios" class="relative py-32 px-6 bg-[#0e0e0e] overflow-hidden">
+  <!-- Ambient background glow -->
+  <div class="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-accent/10 rounded-full blur-[140px] pointer-events-none"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+      <span class="glint-subheading">Servicios Profesionales de Desarrollo Web</span>
+      <h2 class="text-4xl md:text-6xl font-black text-white mt-3 tracking-tight">
+        Diseño tu página web <br/>
+        <span class="text-white">para que tu negocio </span><span class="text-accent">venda más.</span>
+      </h2>
+      <p class="text-gray-400 text-lg md:text-xl mt-6 leading-relaxed">
+        Soy <strong class="text-white">Esteban Muñoz</strong>. Integro mi formación en <strong class="text-white">Negocios Internacionales</strong> con el <strong class="text-white">Desarrollo Web Full Stack</strong> para crear plataformas rápidas, atractivas y pensadas estratégicamente para convertir visitantes en clientes reales.
+      </p>
+    </div>
+
+    <!-- Hero Showcase: Featured Image with Glassmorphic Card -->
+    <div class="mb-24 reveal">
+      <div class="relative group rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-2 sm:p-4 shadow-2xl">
+        <div class="relative overflow-hidden rounded-xl">
+          <img 
+            src={serviciosImg.src} 
+            alt="Esteban Muñoz - Creación de Páginas Web Profesionales para Negocios y Emprendedores" 
+            class="w-full h-auto max-h-[580px] object-cover rounded-xl transition-transform duration-700 group-hover:scale-102"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-10">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-accent/20 text-accent border border-accent/40 w-fit mb-3 backdrop-blur-md">
+              <span class="size-2 rounded-full bg-accent animate-ping"></span>
+              Esteban Muñoz &middot; Desarrollo Web a Medida
+            </span>
+            <h3 class="text-2xl sm:text-4xl font-bold text-white mb-2">
+              ¿Listo para darle a tu negocio la presencia que merece?
+            </h3>
+            <p class="text-gray-300 text-sm sm:text-base max-w-2xl mb-6">
+              Sitios web 100% responsivos adaptados a celulares, con carga instantánea, botón directo a WhatsApp y preparados para posicionar en Google.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a 
+                href="#contacto" 
+                class="px-6 py-3 bg-accent hover:bg-accent-hover text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-md transition-all shadow-lg hover:shadow-accent/30 flex items-center gap-2"
+              >
+                Cotizar Mi Página Web
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a 
+                href="https://wa.me/593983958430/?text=Hola%20Esteban,%20me%20interesa%20cotizar%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="px-6 py-3 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-md transition-all backdrop-blur-md flex items-center gap-2 border border-white/10"
+              >
+                Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+      
+      <!-- Card 1 -->
+      <div class="p-8 rounded-2xl bg-[#151515] border border-white/5 hover:border-accent/40 transition-all duration-300 group hover:-translate-y-1.5 reveal">
+        <div class="size-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
+          <svg class="size-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
+          Landing Pages de Alto Rendimiento
+        </h4>
+        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+          Páginas orientadas a resultados para lanzamientos de servicios, captación de prospectos y campañas de anuncios. Cada elemento está pensado para que el usuario tome acción.
+        </p>
+        <ul class="space-y-2 text-xs text-gray-400">
+          <li class="flex items-center gap-2"><span class="text-accent font-bold">✓</span> Estructura y llamado a la acción persuasivos</li>
+          <li class="flex items-center gap-2"><span class="text-accent font-bold">✓</span> Formularios integrados y botón a WhatsApp</li>
+          <li class="flex items-center gap-2"><span class="text-accent font-bold">✓</span> Carga ultrarrápida (&lt; 1 segundo)</li>
+        </ul>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="p-8 rounded-2xl bg-[#151515] border border-white/5 hover:border-accent/40 transition-all duration-300 group hover:-translate-y-1.5 reveal" style="animation-delay: 150ms;">
+        <div class="size-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
+          <svg class="size-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
+          Sitios Web para Negocios & Marcas
+        </h4>
+        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+          Proyecta autoridad y confianza ante tus clientes. Sitios multipágina modernos, adaptados al 100% a la identidad de tu empresa y con experiencia de navegación impecable.
+        </p>
+        <ul class="space-y-2 text-xs text-gray-400">
+          <li class="flex items-center gap-2"><span class="text-accent font-bold">✓</span> Diseño responsive optimizado para teléfonos</li>
+          <li class="flex items-center gap-2"><span class="text-accent font-bold">✓</span> SEO técnico para aparecer en Google</li>
+          <li class="flex items-center gap-2"><span class="text-accent font-bold">✓</span> Integración con redes sociales, ubicación y catálogo</li>
+        </ul>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="p-8 rounded-2xl bg-[#151515] border border-white/5 hover:border-accent/40 transition-all duration-300 group hover:-translate-y-1.5 reveal" style="animation-delay: 300ms;">
+        <div class="size-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
+          <svg class="size-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
+          Tiendas Online & E-commerce
+        </h4>
+        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+          Vende tus productos 24/7 sin complicaciones. Catálogos fáciles de explorar, carritos de compra ágiles y opciones de pago flexibles para tus compradores.
+        </p>
+        <ul class="space-y-2 text-xs text-gray-400">
+          <li class="flex items-center gap-2"><span class="text-accent font-bold">✓</span> Catálogo de productos interactivo y ordenado</li>
+          <li class="flex items-center gap-2"><span class="text-accent font-bold">✓</span> Carrito de compra con checkout intuitivo</li>
+          <li class="flex items-center gap-2"><span class="text-accent font-bold">✓</span> Pasarelas de pago y confirmación de pedidos a WhatsApp</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Process Workflow -->
+    <div class="reveal">
+      <div class="text-center mb-12">
+        <span class="glint-subheading">Metodología Clara y Transparente</span>
+        <h3 class="text-3xl font-bold text-white mt-1">Cómo trabajaremos en tu proyecto</h3>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="p-6 rounded-xl bg-[#141414] border border-white/5 relative">
+          <span class="text-5xl font-black text-white/5 absolute top-3 right-4 select-none">01</span>
+          <span class="text-xs uppercase tracking-widest text-accent font-bold block mb-2">Paso 1</span>
+          <h5 class="text-lg font-bold text-white mb-2">Estrategia & Objetivos</h5>
+          <p class="text-gray-400 text-xs leading-relaxed">
+            Conversamos sobre tu negocio, tus metas comerciales y qué tipo de clientes deseas atraer con la web.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-[#141414] border border-white/5 relative">
+          <span class="text-5xl font-black text-white/5 absolute top-3 right-4 select-none">02</span>
+          <span class="text-xs uppercase tracking-widest text-accent font-bold block mb-2">Paso 2</span>
+          <h5 class="text-lg font-bold text-white mb-2">Diseño Visual a Medida</h5>
+          <p class="text-gray-400 text-xs leading-relaxed">
+            Creo una propuesta gráfica moderna, limpia y alineada con la esencia y colores de tu marca.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-[#141414] border border-white/5 relative">
+          <span class="text-5xl font-black text-white/5 absolute top-3 right-4 select-none">03</span>
+          <span class="text-xs uppercase tracking-widest text-accent font-bold block mb-2">Paso 3</span>
+          <h5 class="text-lg font-bold text-white mb-2">Desarrollo & Optimización</h5>
+          <p class="text-gray-400 text-xs leading-relaxed">
+            Programo el sitio con tecnologías punteras garantizando máxima velocidad, seguridad y adaptabilidad móvil.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-[#141414] border border-white/5 relative">
+          <span class="text-5xl font-black text-white/5 absolute top-3 right-4 select-none">04</span>
+          <span class="text-xs uppercase tracking-widest text-accent font-bold block mb-2">Paso 4</span>
+          <h5 class="text-lg font-bold text-white mb-2">Lanzamiento & Acompañamiento</h5>
+          <p class="text-gray-400 text-xs leading-relaxed">
+            Conexión con tu dominio, pruebas finales y soporte para que comiences a compartir tu nueva página web.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

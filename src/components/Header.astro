@@ -1,30 +1,102 @@
-<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 bg-transparent py-5">
+---
+---
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#111111]/80 backdrop-blur-md border-b border-white/5 py-4">
   <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
     <!-- Logo -->
-    <a href="#inicio" class="text-2xl font-black tracking-widest uppercase text-white hover:text-accent transition-colors">
+    <a href="#inicio" class="text-2xl font-black tracking-widest uppercase text-white hover:text-accent transition-colors flex items-center gap-1">
       Esteban<span class="text-accent">.</span>
     </a>
 
-    <!-- Navigation -->
-    <nav class="hidden md:flex flex-row gap-x-8">
-      <a href="#inicio" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors">Inicio</a>
-      <a href="#sobre-mi" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors">Sobre mí</a>
-      <a href="#proyectos" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors">Proyectos</a>
-      <a href="#contacto" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors">Contacto</a>
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex flex-row items-center gap-x-8">
+      <a href="#inicio" class="text-xs font-bold uppercase tracking-wider text-gray-300 hover:text-accent transition-colors">Inicio</a>
+      <a href="#servicios" class="text-xs font-bold uppercase tracking-wider text-gray-300 hover:text-accent transition-colors flex items-center gap-1.5">
+        <span class="size-1.5 rounded-full bg-accent"></span>
+        Servicios Web
+      </a>
+      <a href="#sobre-mi" class="text-xs font-bold uppercase tracking-wider text-gray-300 hover:text-accent transition-colors">Sobre mí</a>
+      <a href="#experiencia" class="text-xs font-bold uppercase tracking-wider text-gray-300 hover:text-accent transition-colors">Experiencia</a>
+      <a href="#proyectos" class="text-xs font-bold uppercase tracking-wider text-gray-300 hover:text-accent transition-colors">Proyectos</a>
+      <a href="#contacto" class="text-xs font-bold uppercase tracking-wider text-gray-300 hover:text-accent transition-colors">Contacto</a>
+      
+      <!-- CTA Button in Header -->
+      <a 
+        href="#servicios" 
+        class="ml-2 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-accent hover:bg-accent-hover transition-colors rounded-sm shadow-md"
+      >
+        Cotizar Web
+      </a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button 
+      id="menu-toggle" 
+      aria-label="Abrir menú de navegación" 
+      class="md:hidden text-white p-2 focus:outline-none focus:ring-2 focus:ring-accent rounded-md"
+    >
+      <svg id="menu-icon-open" class="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="menu-icon-close" class="size-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div id="mobile-menu" class="hidden md:hidden px-6 pt-4 pb-6 bg-[#111111]/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
+    <nav class="flex flex-col gap-y-4">
+      <a href="#inicio" class="mobile-link text-sm font-bold uppercase tracking-wider text-gray-200 hover:text-accent transition-colors py-2 border-b border-white/5">Inicio</a>
+      <a href="#servicios" class="mobile-link text-sm font-bold uppercase tracking-wider text-accent transition-colors py-2 border-b border-white/5 flex items-center justify-between">
+        <span>Servicios Web</span>
+        <span class="text-[10px] px-2 py-0.5 rounded bg-accent/20 border border-accent/40">Nuevo</span>
+      </a>
+      <a href="#sobre-mi" class="mobile-link text-sm font-bold uppercase tracking-wider text-gray-200 hover:text-accent transition-colors py-2 border-b border-white/5">Sobre mí</a>
+      <a href="#experiencia" class="mobile-link text-sm font-bold uppercase tracking-wider text-gray-200 hover:text-accent transition-colors py-2 border-b border-white/5">Experiencia</a>
+      <a href="#proyectos" class="mobile-link text-sm font-bold uppercase tracking-wider text-gray-200 hover:text-accent transition-colors py-2 border-b border-white/5">Proyectos</a>
+      <a href="#contacto" class="mobile-link text-sm font-bold uppercase tracking-wider text-gray-200 hover:text-accent transition-colors py-2 border-b border-white/5">Contacto</a>
+      
+      <a 
+        href="#contacto" 
+        class="mobile-link mt-2 text-center py-3 text-xs font-bold uppercase tracking-wider text-white bg-accent hover:bg-accent-hover transition-colors rounded-sm shadow-md"
+      >
+        Cotizar Mi Proyecto
+      </a>
     </nav>
   </div>
 </header>
 
 <script>
-  // Add background color to header when scrolling
+  // Mobile menu toggle
+  const toggleBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  const toggleMenu = () => {
+    const isHidden = mobileMenu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden', !isHidden);
+    iconClose?.classList.toggle('hidden', isHidden);
+  };
+
+  toggleBtn?.addEventListener('click', toggleMenu);
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+    });
+  });
+
+  // Header background on scroll
   const header = document.getElementById('main-header');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header?.classList.remove('bg-transparent', 'py-5');
-      header?.classList.add('bg-[#111111]', 'py-4', 'shadow-lg');
+    if (window.scrollY > 40) {
+      header?.classList.add('shadow-xl', 'bg-[#111111]/95');
     } else {
-      header?.classList.add('bg-transparent', 'py-5');
-      header?.classList.remove('bg-[#111111]', 'py-4', 'shadow-lg');
+      header?.classList.remove('shadow-xl');
     }
   });
 </script>
