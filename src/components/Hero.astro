@@ -3,68 +3,52 @@ import Social from "../components/Social.astro"
 import FloatingIcons from "./FloatingIcons.astro"
 import Image from "../assets/foto.jpg"
 ---
-<section id="inicio" class="relative flex flex-col justify-center min-h-screen px-6 overflow-hidden bg-[#111111]">
+<section id="inicio" class="relative flex flex-col justify-center min-h-screen px-6 overflow-hidden bg-transparent">
   <!-- Floating Icons Animation -->
   <FloatingIcons />
   
-  <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between pt-28 md:pt-36 pb-16 gap-12">
+  <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between pt-24 md:pt-32 pb-16 gap-12">
     <!-- Left Content -->
-    <div class="flex flex-col gap-6 max-w-2xl text-center lg:text-left items-center lg:items-start">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/15 border border-accent/30 text-accent text-xs font-bold uppercase tracking-widest reveal">
-        <span class="size-2 rounded-full bg-accent animate-ping"></span>
-        Disponible para Proyectos & Desarrollo Web
-      </div>
+    <div class="flex flex-col gap-6 max-w-2xl">
+      <span class="glint-subheading reveal">Bienvenido a mi mundo</span>
       
-      <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[1.08] reveal" style="animation-delay: 200ms;">
-        Hola, soy <br class="hidden sm:inline" />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-100 to-gray-400">Esteban Muñoz.</span><br />
-        <span class="text-white/70 font-medium text-2xl sm:text-4xl lg:text-5xl tracking-tight block mt-2">
-          Desarrollador Full Stack & <span class="text-accent">Estratega Digital.</span>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-tight reveal" style="animation-delay: 200ms;">
+        Hola, soy Esteban.<br />
+        <span class="text-white/60 font-medium text-3xl md:text-5xl lg:text-6xl tracking-tight block mt-2">
+          Estudiante de software & <span class="text-accent">solucionador de problemas.</span>
         </span>
       </h1>
-
-      <p class="text-gray-400 text-base sm:text-lg max-w-xl leading-relaxed reveal" style="animation-delay: 300ms;">
-        Ayudo a emprendedores, marcas y empresas a construir páginas web profesionales de alto impacto, rápidas y orientadas a la captación de clientes y ventas.
-      </p>
       
-      <div class="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto reveal" style="animation-delay: 400ms;">
-        <a 
-          href="#servicios" 
-          class="px-8 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold bg-accent hover:bg-accent-hover transition-all rounded-md flex items-center justify-center gap-2 shadow-lg hover:shadow-accent/40"
-        >
-          <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          Emprende con tu Web
-        </a>
-        <a 
-          href="cv.pdf" 
-          download="Esteban_Munoz_CV.pdf" 
-          class="px-8 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold border-2 border-white/20 hover:border-white transition-colors rounded-md flex items-center justify-center gap-3 bg-white/5"
-        >
-          <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
+      <div class="flex flex-col sm:flex-row gap-6 mt-8 reveal" style="animation-delay: 400ms;">
+        <a href="cv.pdf" download="Esteban_Munoz_CV.pdf" class="px-8 py-4 text-white uppercase tracking-widest text-sm font-bold bg-accent hover:bg-accent-hover transition-colors rounded-sm flex items-center justify-center gap-3">
+          <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
           Descargar CV
+        </a>
+        <a href="#sobre-mi" class="px-8 py-4 text-white uppercase tracking-widest text-sm font-bold border-2 border-white/20 hover:border-white transition-colors rounded-sm flex items-center justify-center">
+          Más sobre mí
         </a>
       </div>
       
-      <div class="mt-8 reveal" style="animation-delay: 600ms;">
+      <div class="mt-12 reveal" style="animation-delay: 600ms;">
         <Social />
       </div>
     </div>
 
     <!-- Right Content: Profile Picture -->
     <div class="relative group reveal" style="animation-delay: 800ms;">
-      <div class="absolute inset-0 transition-opacity duration-500 rounded-full opacity-30 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 blur-2xl group-hover:opacity-60 animate-pulse"></div>
+      <div class="absolute inset-0 transition-opacity duration-500 rounded-full opacity-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-xl group-hover:opacity-60 animate-pulse"></div>
       <img
-        class="relative rounded-full shadow-2xl size-60 sm:size-72 md:size-80 lg:size-88 object-cover border-4 border-white/10 transition-transform duration-500 group-hover:scale-105"
+        class="relative rounded-full shadow-2xl size-56 md:size-72 lg:size-80 object-cover border-4 border-white/10 transition-transform duration-500 group-hover:scale-105"
         src={Image.src}
-        alt="Foto de perfil de Esteban Muñoz"
+        alt="Foto de Esteban"
       />
     </div>
   </div>
 
   <!-- Scroll Down Indicator -->
-  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 reveal opacity-60 hover:opacity-100 transition-opacity">
-    <span class="uppercase tracking-[0.2em] text-[10px] font-bold text-accent">Desliza</span>
-    <div class="w-[2px] h-10 bg-white/20 relative overflow-hidden">
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 reveal opacity-50 hover:opacity-100 transition-opacity">
+    <span class="uppercase tracking-[0.2em] text-xs font-bold text-accent">Scroll</span>
+    <div class="w-[2px] h-12 bg-white/20 relative overflow-hidden">
       <div class="absolute top-0 left-0 w-full h-1/2 bg-accent animate-[scrolldown_1.5s_ease-in-out_infinite]"></div>
     </div>
   </div>

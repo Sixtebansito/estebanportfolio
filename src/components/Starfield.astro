@@ -1,0 +1,220 @@
+---
+// Starfield.astro - Fondo interactivo y elegante de estrellas en movimiento
+---
+
+<canvas id="starfield-canvas" class="fixed inset-0 pointer-events-none -z-10 w-full h-full"></canvas>
+
+<script>
+  function initStarfield() {
+    const canvas = document.getElementById('starfield-canvas') as HTMLCanvasElement | null;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Detectar preferencia de reducción de movimiento
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let animationFrameId: number;
+
+    interface Star {
+      x: number;
+      y: number;
+      size: number;
+      baseAlpha: number;
+      alpha: number;
+      twinkleSpeed: number;
+      twinkleOffset: number;
+      vx: number;
+      vy: number;
+      isAccent: boolean;
+    }
+
+    interface ShootingStar {
+      x: number;
+      y: number;
+      length: number;
+      speed: number;
+      angle: number;
+      opacity: number;
+      active: boolean;
+    }
+
+    let stars: Star[] = [];
+    let shootingStar: ShootingStar = {
+      x: 0,
+      y: 0,
+      length: 0,
+      speed: 0,
+      angle: 0,
+      opacity: 0,
+      active: false
+    };
+
+    function resize() {
+      if (!canvas) return;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+
+      ctx?.scale(dpr, dpr);
+      createStars();
+    }
+
+    function createStars() {
+      // Ajustar cantidad de estrellas según el tamaño de la pantalla
+      const count = Math.floor((width * height) / 9000); // ~120-160 en escritorio, ~40-60 en móvil
+      stars = [];
+
+      for (let i = 0; i < count; i++) {
+        const isAccent = Math.random() < 0.15; // 15% de estrellas con tono verde Glint
+        stars.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 1.4 + 0.6, // Tamaños entre 0.6px y 2.0px
+          baseAlpha: Math.random() * 0.5 + 0.25,
+          alpha: 0.5,
+          twinkleSpeed: Math.random() * 0.02 + 0.008,
+          twinkleOffset: Math.random() * Math.PI * 2,
+          vx: (Math.random() - 0.5) * 0.12, // Deriva suave horizontal
+          vy: -(Math.random() * 0.18 + 0.08), // Flotación suave hacia arriba
+          isAccent
+        });
+      }
+    }
+
+    function triggerShootingStar() {
+      if (shootingStar.active || prefersReducedMotion) return;
+      shootingStar.active = true;
+      shootingStar.x = Math.random() * (width * 0.7);
+      shootingStar.y = Math.random() * (height * 0.4);
+      shootingStar.length = Math.random() * 80 + 70;
+      shootingStar.speed = Math.random() * 10 + 12;
+      shootingStar.angle = Math.PI / 4 + (Math.random() - 0.5) * 0.2; // ~45 grados
+      shootingStar.opacity = 1;
+    }
+
+    // Disparar una estrella fugaz cada 8-14 segundos
+    let shootingStarInterval = setInterval(() => {
+      if (Math.random() > 0.3) {
+        triggerShootingStar();
+      }
+    }, 9000);
+
+    let time = 0;
+
+    function render() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      time += 1;
+
+      // Dibujar estrellas
+      for (let i = 0; i < stars.length; i++) {
+        const star = stars[i];
+
+        if (!prefersReducedMotion) {
+          // Movimiento de deriva
+          star.x += star.vx;
+          star.y += star.vy;
+
+          // Reaparición al salir de la pantalla
+          if (star.y < 0) {
+            star.y = height;
+            star.x = Math.random() * width;
+          }
+          if (star.x < 0) star.x = width;
+          if (star.x > width) star.x = 0;
+
+          // Titileo suave (parpadeo cosmológico)
+          star.alpha = star.baseAlpha + Math.sin(time * star.twinkleSpeed + star.twinkleOffset) * 0.25;
+          if (star.alpha < 0.1) star.alpha = 0.1;
+        }
+
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+
+        if (star.isAccent) {
+          ctx.fillStyle = `rgba(74, 222, 128, ${star.alpha * 0.9})`; // Verde Glint
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = 'rgba(34, 197, 94, 0.4)';
+        } else {
+          ctx.fillStyle = `rgba(240, 245, 255, ${star.alpha})`; // Blanco perla
+          ctx.shadowBlur = 3;
+          ctx.shadowColor = 'rgba(255, 255, 255, 0.3)';
+        }
+
+        ctx.fill();
+        ctx.shadowBlur = 0; // Reset sombra para performance
+      }
+
+      // Dibujar estrella fugaz
+      if (shootingStar.active && !prefersReducedMotion) {
+        const endX = shootingStar.x - Math.cos(shootingStar.angle) * shootingStar.length;
+        const endY = shootingStar.y - Math.sin(shootingStar.angle) * shootingStar.length;
+
+        const grad = ctx.createLinearGradient(shootingStar.x, shootingStar.y, endX, endY);
+        grad.addColorStop(0, `rgba(255, 255, 255, ${shootingStar.opacity})`);
+        grad.addColorStop(0.3, `rgba(74, 222, 128, ${shootingStar.opacity * 0.8})`);
+        grad.addColorStop(1, 'rgba(74, 222, 128, 0)');
+
+        ctx.beginPath();
+        ctx.moveTo(shootingStar.x, shootingStar.y);
+        ctx.lineTo(endX, endY);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.6;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        shootingStar.x += Math.cos(shootingStar.angle) * shootingStar.speed;
+        shootingStar.y += Math.sin(shootingStar.angle) * shootingStar.speed;
+        shootingStar.opacity -= 0.018;
+
+        if (shootingStar.opacity <= 0 || shootingStar.x > width || shootingStar.y > height) {
+          shootingStar.active = false;
+        }
+      }
+
+      if (!prefersReducedMotion) {
+        animationFrameId = requestAnimationFrame(render);
+      }
+    }
+
+    // Manejo de visibilidad (ahorrar batería cuando la pestaña está en segundo plano)
+    function handleVisibilityChange() {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrameId);
+      } else if (!prefersReducedMotion) {
+        animationFrameId = requestAnimationFrame(render);
+      }
+    }
+
+    window.addEventListener('resize', resize);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    resize();
+    render();
+
+    // Limpieza si el componente se desmonta
+    return () => {
+      window.removeEventListener('resize', resize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      clearInterval(shootingStarInterval);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }
+
+  // Inicializar al cargar el DOM y en transiciones de página
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initStarfield();
+  } else {
+    document.addEventListener('DOMContentLoaded', initStarfield);
+  }
+</script>
