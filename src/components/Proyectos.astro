@@ -8,6 +8,7 @@ import fundamentosImg from "../assets/fundamentos.jpg"
 import catfeteriaImg from "../assets/catfeteria.jpg"
 import telemetriaImg from "../assets/telemetria.jpg"
 import movingllcImg from "../assets/movingllc.png"
+import arlenesImg from "../assets/arlenes-cleaning.png"
 const TAGS = {
   ASTRO: {
     name: "Astro",
@@ -61,6 +62,13 @@ interface Proyecto {
 }
 
 const PROYECTOS: Proyecto[] = [
+  {
+    title: "Arlene's Cleaning Company LLC",
+    description: "Plataforma web comercial y de cotización para servicios de limpieza premium residencial y comercial en Connecticut. Diseño elegante, estimador de precios en 60 segundos y presentación de servicios eco-friendly.",
+    image: arlenesImg.src,
+    link: "https://arlenes-cleaning.vercel.app/",
+    tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.JAVASCRIPT]
+  },
   {
     title: "David's Moving Services & Logistics",
     description: "Plataforma web comercial y de logística para servicios de mudanzas en Connecticut y New York. Incluye cotizador interactivo de mudanzas en tiempo real, selección de camiones y soporte bilingüe.",
