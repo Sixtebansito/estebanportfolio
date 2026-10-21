@@ -2,6 +2,7 @@
 import LinkInline from "./LinkInline.astro"
 
 interface Props {
+  index: number
   title: string
   company: string
   description: string
@@ -9,7 +10,7 @@ interface Props {
   date: string
 }
 
-const { title, company, description, link, date } = Astro.props
+const { index, title, company, description, link, date } = Astro.props
 ---
 
 <div
@@ -21,13 +22,13 @@ const { title, company, description, link, date } = Astro.props
         >&bull;</span
       >
 
-      <h3 class="text-xl font-bold text-accent">{title}</h3>
-      <h4 class="font-semibold text-xl text-white">{company}</h4>
-      <time class="p-0 m-0 text-sm text-gray-400">{date}</time>
+      <h3 class="text-xl font-bold text-accent" data-i18n={`exp.job${index}.title`}>{title}</h3>
+      <h4 class="font-semibold text-xl text-white" data-i18n={`exp.job${index}.company`}>{company}</h4>
+      <time class="p-0 m-0 text-sm text-gray-400" data-i18n={`exp.job${index}.date`}>{date}</time>
     </div>
   </div>
   <div class="relative flex flex-col gap-2 pb-4 text-gray-400 leading-relaxed md:col-span-3">
-    {description}
+    <span data-i18n={`exp.job${index}.desc`}>{description}</span>
     {
       link && (
         <LinkInline href={link}>

@@ -9,17 +9,17 @@ import Badge from "../components/Badge.astro"
     <!-- Text Content -->
     <div class="flex-1 space-y-8 reveal">
       <div>
-        <span class="glint-subheading">Sobre Mí</span>
-        <h2 class="text-4xl md:text-5xl font-bold text-white mt-2">
+        <span class="glint-subheading" data-i18n="about.sub">Sobre Mí</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mt-2" data-i18n="about.title">
           Permíteme <span class="text-accent">presentarme.</span>
         </h2>
       </div>
 
-      <p class="text-lg md:text-xl text-gray-400 leading-relaxed">
+      <p class="text-lg md:text-xl text-gray-400 leading-relaxed" data-i18n="about.p1">
         <strong class="text-white font-semibold">Licenciado en Negocios Internacionales y Estudiante de Desarrollo de Software</strong> de Quito, Ecuador. Me apasiona resolver problemas complejos y crear experiencias digitales que impacten positivamente a los usuarios.
       </p>
 
-      <p class="text-lg text-gray-400 leading-relaxed">
+      <p class="text-lg text-gray-400 leading-relaxed" data-i18n="about.p2">
         Mi experiencia combinando negocios y tecnología me permite entender los proyectos no solo desde la perspectiva del código, sino también desde el valor que aportan al mercado y a las personas. Siempre estoy buscando aprender nuevas tecnologías y enfrentar nuevos desafíos.
       </p>
     </div>
@@ -43,7 +43,7 @@ import Badge from "../components/Badge.astro"
             rel="noopener"
             class="flex items-center transition md:justify-center md:hover:scale-110"
           >
-            <Badge>Disponible para trabajar</Badge>
+            <Badge><span data-i18n="about.badge">Disponible para trabajar</span></Badge>
           </a>
         </div>
       </div>

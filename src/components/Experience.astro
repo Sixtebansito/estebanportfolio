@@ -2,35 +2,32 @@
 import ExperienceI from "./ExperienceI.astro"
 
 const EXPERIENCE = [
-    {
-        title: "Asistente de Gerencia",
-        date: "Presente",
-        company: "MilamorTruck S.A",
-        description: "Logística, Gestión de Caja, Asistencia administrativa, Organización de eventos, Cotización de fletes, arreglos mecánicos, Elección conductores, Pago de salarios, Facturación",
-    },
-    {
-        title: "Gestor de Cobranzas",
-        company: "Netlife",
-        date: "09/2023 - 12/2024",
-        description: "Asistencia en administración de contratos, facturación, caja, cuentas, call center, administración de carteras, manejo de retención, servicio al cliente y venta de productos adicionales", 
-    },
-    {
-        title: "Asistente de Importaciones",
-        date: "01/2022 – 06/2022",
-        company: "Saix Services S.A.S",
-        description: "Búsqueda de información arancelaria, cotizaciones de importación y apoyo en ventas, marketing, community Manager",
-
-    },
-
+  {
+    title: "Coordinador de Operaciones & Sistemas",
+    date: "06/2024 - Presente",
+    company: "MilamorTruck S.A",
+    description: "Logística operativa, facturación electrónica, conciliación de caja, gestión sistematizada de inventarios y soporte técnico interno.",
+  },
+  {
+    title: "Especialista en Cobranzas & Gestión Contractual",
+    company: "Netlife / Megadatos S.A",
+    date: "09/2023 - 12/2024",
+    description: "Administración y depuración de bases de datos contractuales para clientes residenciales y corporativos, facturación recurrente y conciliación en CRM.",
+  },
+  {
+    title: "Asistente de Importaciones & Comercio",
+    date: "01/2022 – 06/2022",
+    company: "Saix Services S.A.S",
+    description: "Búsqueda de información arancelaria, cotizaciones de importación, operaciones comerciales y soporte en marketing digital B2B.",
+  },
 ]
 ---
-    <ol class="relative mt-16">
-    {
-        EXPERIENCE.map((experience) => (
-        <li class="">
-            <ExperienceI {...experience} />
-        </li>
-        ))
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience, index) => (
+      <li>
+        <ExperienceI index={index} {...experience} />
+      </li>
+    ))
   }
 </ol>
-

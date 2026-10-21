@@ -1,7 +1,7 @@
 ---
 import Social from "../components/Social.astro"
 import FloatingIcons from "./FloatingIcons.astro"
-import Image from "../assets/foto.jpg"
+import Image from "../assets/fotocv.jpg"
 ---
 <section id="inicio" class="relative flex flex-col justify-center min-h-screen px-6 overflow-hidden bg-transparent">
   <!-- Floating Icons Animation -->
@@ -10,22 +10,31 @@ import Image from "../assets/foto.jpg"
   <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between pt-24 md:pt-32 pb-16 gap-12">
     <!-- Left Content -->
     <div class="flex flex-col gap-6 max-w-2xl">
-      <span class="glint-subheading reveal">Bienvenido a mi mundo</span>
+      <span class="glint-subheading reveal" data-i18n="hero.sub">Bienvenido a mi mundo</span>
       
       <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-tight reveal" style="animation-delay: 200ms;">
-        Hola, soy Esteban.<br />
-        <span class="text-white/60 font-medium text-3xl md:text-5xl lg:text-6xl tracking-tight block mt-2">
+        <span data-i18n="hero.greeting">Hola, soy Esteban.</span><br />
+        <span class="text-white/60 font-medium text-3xl md:text-5xl lg:text-6xl tracking-tight block mt-2" data-i18n="hero.tagline">
           Estudiante de software & <span class="text-accent">solucionador de problemas.</span>
         </span>
       </h1>
       
-      <div class="flex flex-col sm:flex-row gap-6 mt-8 reveal" style="animation-delay: 400ms;">
-        <a href="cv.pdf" download="Esteban_Munoz_CV.pdf" class="px-8 py-4 text-white uppercase tracking-widest text-sm font-bold bg-accent hover:bg-accent-hover transition-colors rounded-sm flex items-center justify-center gap-3">
-          <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
-          Descargar CV
+      <div class="flex flex-wrap gap-4 mt-8 reveal" style="animation-delay: 400ms;">
+        <!-- Botón Descargar CV (Español / Dinámico) -->
+        <a id="hero-cv-btn" href="cv.pdf" download="Esteban_Munoz_CV_ES.pdf" class="px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold bg-accent hover:bg-accent-hover transition-all rounded-sm flex items-center justify-center gap-2.5 shadow-lg hover:shadow-accent/30">
+          <svg class="size-5 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
+          <span data-i18n="hero.cv_btn">Descargar CV (ES)</span>
         </a>
-        <a href="#sobre-mi" class="px-8 py-4 text-white uppercase tracking-widest text-sm font-bold border-2 border-white/20 hover:border-white transition-colors rounded-sm flex items-center justify-center">
-          Más sobre mí
+
+        <!-- Botón Descargar CV en Inglés -->
+        <a id="hero-cv-en-btn" href="cv_en.pdf" download="Esteban_Munoz_CV_EN.pdf" class="px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold border-2 border-accent/60 hover:border-accent hover:bg-accent/10 transition-all rounded-sm flex items-center justify-center gap-2.5">
+          <svg class="size-4 shrink-0 text-accent" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
+          <span data-i18n="hero.cv_en_btn">Download CV (EN)</span>
+        </a>
+
+        <!-- Botón Más sobre mí -->
+        <a href="#sobre-mi" class="px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold border-2 border-white/20 hover:border-white transition-colors rounded-sm flex items-center justify-center">
+          <span data-i18n="hero.about_btn">Más sobre mí</span>
         </a>
       </div>
       
@@ -47,7 +56,7 @@ import Image from "../assets/foto.jpg"
 
   <!-- Scroll Down Indicator -->
   <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 reveal opacity-50 hover:opacity-100 transition-opacity">
-    <span class="uppercase tracking-[0.2em] text-xs font-bold text-accent">Scroll</span>
+    <span class="uppercase tracking-[0.2em] text-xs font-bold text-accent" data-i18n="hero.scroll">Scroll</span>
     <div class="w-[2px] h-12 bg-white/20 relative overflow-hidden">
       <div class="absolute top-0 left-0 w-full h-1/2 bg-accent animate-[scrolldown_1.5s_ease-in-out_infinite]"></div>
     </div>
