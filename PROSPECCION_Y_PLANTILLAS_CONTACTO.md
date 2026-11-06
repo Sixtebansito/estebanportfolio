@@ -255,3 +255,55 @@ Solo le escribía para saber si tuvo oportunidad de revisar el enlace del cotiza
 4. **Registra tus prospectos:**
    * Crea una lista simple (Negocio | Teléfono | Fecha de Contacto | Respuesta).
 5. **Cierra con videollamada o visita:** Si el negocio está en Quito, ofrecerles una visita rápida o videollamada de 10 minutos para mostrarles la demo genera un 80% más de tasa de cierre.
+
+---
+
+## 🛒 5. Publicación para Facebook Marketplace (Software a Medida & Apps Pequeñas)
+
+Utiliza la imagen publicitaria generada: **`esteban_munoz_software_a_medida.jpg`**
+
+### 📌 Datos de la Publicación en Marketplace:
+* **Título (Elige uno):**
+  * *Desarrollo de Software a Medida / Sistemas e Inventarios para Negocios* (Recomendado)
+  * *Creación de Apps Web y Sistemas de Gestión para Emprendedores y Pymes*
+  * *Automatización y Software para Negocios / Inventarios, Ventas y Cotizadores*
+* **Categoría:** *Servicios / Servicios Profesionales* o *Informática / Electrónica*
+* **Precio:** *$1* (o el precio base de inicio, por ejemplo *$80* o *$120*, aclarando "A convenir según requerimientos")
+* **Ubicación:** *Quito, Ecuador* (y amplía el radio de entrega/servicio a Pichincha o Nacional)
+
+### 📋 Descripción para Copiar y Pegar en Facebook Marketplace:
+
+```text
+🚀 ¿Cansado de llevar las cuentas, pedidos e inventarios en cuadernos o excels desordenados?
+
+Hola, soy Esteban Muñoz, desarrollador de software y especialista en negocios. Ayudo a emprendedores, talleres, locales comerciales y profesionales a crear SISTEMAS A MEDIDA y APPS PEQUEÑAS diseñadas exactamente para lo que su negocio necesita.
+
+💡 ¿Qué tipo de software o apps puedo desarrollar para ti?
+✅ Sistemas de control de inventarios, stock y alertas de productos
+✅ Registro de ventas diarias, cobros y reportes de ganancias
+✅ Generador automático de facturas, notas de venta y proformas/cotizaciones
+✅ Control de clientes, historial de servicios, agenda de citas y pedidos
+✅ Cotizadores interactivos que calculan precios al instante
+✅ Apps web accesibles desde cualquier celular, tablet o computadora (sin instalar programas pesados)
+
+⭐ ¿Por qué trabajar conmigo?
+- Trato directo con el desarrollador (sin agencias costosas ni intermediarios).
+- Entiendo tu modelo de negocio (Licenciado en Negocios Internacionales).
+- Software intuitivo, fácil de usar y sin complicaciones técnicas.
+- Asesoría personalizada y acompañamiento continuo.
+
+🎁 ASESORÍA Y DEMOSTRACIÓN INICIAL GRATUITA:
+Cuéntame qué problema tiene tu negocio hoy y te muestro cómo solucionarlo con una app o sistema sencillo.
+
+📲 Envíame un mensaje directo por aquí o escríbeme a WhatsApp: [Tu Número de WhatsApp]
+📄 Revisa mi perfil y proyectos reales: https://sixtebansito.github.io/estebanportfolio/
+```
+
+### ⚡ Respuesta Rápida al mensaje típico de Marketplace ("¿Sigue disponible?"):
+```text
+¡Hola [Nombre]! Sí, sigo disponible con gusto 👋 
+Desarrollo sistemas a medida y apps pequeñas para negocios (control de inventario, ventas, clientes, cotizadores o pedidos).
+
+¿Qué tipo de negocio tienes o qué proceso te gustaría automatizar/organizar en tu empresa? Cuéntame y te asesoro sin ningún compromiso.
+```
+
