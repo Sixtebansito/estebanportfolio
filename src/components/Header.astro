@@ -1,5 +1,4 @@
 ---
-import { translations } from "../data/translations"
 ---
 
 <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 bg-transparent py-5">
@@ -92,13 +91,14 @@ import { translations } from "../data/translations"
     });
 
     // Update dynamic CV download button in Hero
+    const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     const heroCvBtn = document.getElementById('hero-cv-btn') as HTMLAnchorElement | null;
     if (heroCvBtn) {
       if (lang === 'en') {
-        heroCvBtn.href = 'cv_en.pdf';
+        heroCvBtn.href = `${baseUrl}cv_en.pdf`;
         heroCvBtn.setAttribute('download', 'Esteban_Munoz_CV_EN.pdf');
       } else {
-        heroCvBtn.href = 'cv.pdf';
+        heroCvBtn.href = `${baseUrl}cv.pdf`;
         heroCvBtn.setAttribute('download', 'Esteban_Munoz_CV_ES.pdf');
       }
     }

@@ -2,6 +2,8 @@
 import Social from "../components/Social.astro"
 import FloatingIcons from "./FloatingIcons.astro"
 import Image from "../assets/fotocv.jpg"
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 <section id="inicio" class="relative flex flex-col justify-center min-h-screen px-6 overflow-hidden bg-transparent">
   <!-- Floating Icons Animation -->
@@ -21,13 +23,13 @@ import Image from "../assets/fotocv.jpg"
       
       <div class="flex flex-wrap gap-4 mt-8 reveal" style="animation-delay: 400ms;">
         <!-- Botón Descargar CV (Español / Dinámico) -->
-        <a id="hero-cv-btn" href="cv.pdf" download="Esteban_Munoz_CV_ES.pdf" class="px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold bg-accent hover:bg-accent-hover transition-all rounded-sm flex items-center justify-center gap-2.5 shadow-lg hover:shadow-accent/30">
+        <a id="hero-cv-btn" href={`${baseUrl}cv.pdf`} download="Esteban_Munoz_CV_ES.pdf" class="px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold bg-accent hover:bg-accent-hover transition-all rounded-sm flex items-center justify-center gap-2.5 shadow-lg hover:shadow-accent/30">
           <svg class="size-5 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
           <span data-i18n="hero.cv_btn">Descargar CV (ES)</span>
         </a>
 
         <!-- Botón Descargar CV en Inglés -->
-        <a id="hero-cv-en-btn" href="cv_en.pdf" download="Esteban_Munoz_CV_EN.pdf" class="px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold border-2 border-accent/60 hover:border-accent hover:bg-accent/10 transition-all rounded-sm flex items-center justify-center gap-2.5">
+        <a id="hero-cv-en-btn" href={`${baseUrl}cv_en.pdf`} download="Esteban_Munoz_CV_EN.pdf" class="px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold border-2 border-accent/60 hover:border-accent hover:bg-accent/10 transition-all rounded-sm flex items-center justify-center gap-2.5">
           <svg class="size-4 shrink-0 text-accent" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
           <span data-i18n="hero.cv_en_btn">Download CV (EN)</span>
         </a>
