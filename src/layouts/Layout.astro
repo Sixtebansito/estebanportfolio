@@ -18,7 +18,28 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     <title>Portafolio Esteban</title>
   </head>
 
-  <body class="relative text-white bg-[#0e0e0e] font-sans selection:bg-accent selection:text-white min-h-screen">
+  <body class="relative text-white bg-[#0e0e0e] font-sans selection:bg-accent selection:text-white min-h-screen overflow-x-hidden">
+    <!-- Scroll-linked hairline progress indicator (claude-motion) -->
+    <div
+      id="scroll-progress"
+      aria-hidden="true"
+      class="fixed top-0 left-0 right-0 h-[2px] bg-accent origin-left z-[60] pointer-events-none"
+      style="transform: scaleX(0); will-change: transform;"
+    ></div>
+
+    <!-- Subtle drifting dot-grid & radial vignette (claude-motion texture) -->
+    <div aria-hidden="true" class="fixed inset-0 pointer-events-none -z-20 overflow-hidden">
+      <div
+        class="absolute inset-0"
+        style="background: radial-gradient(ellipse 60% 50% at 50% 18%, rgba(57, 181, 74, 0.07) 0%, rgba(57, 181, 74, 0) 70%);"
+      ></div>
+      <div class="motion-dot-grid"></div>
+      <div
+        class="absolute inset-0"
+        style="background: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.65) 100%);"
+      ></div>
+    </div>
+
     <Starfield />
     <Header />
     <slot />
@@ -28,13 +49,22 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       :root {
         --color-accent: #39b54a; /* Glint Green Accent */
         --color-accent-hover: #2d933a;
-        --color-bg: #111111;
-        --color-bg-alt: #151515;
+        --color-bg: #0e0e0e;
+        --color-bg-alt: #141414;
+
+        /* Motion Design Tokens (from claude-motion) */
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-in: cubic-bezier(0.6, 0, 0.9, 0.35);
+        --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+        --ease-spring: cubic-bezier(0.34, 1.35, 0.64, 1);
       }
 
       html {
         font-family: "Onest Variable", system-ui, sans-serif;
         scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: clip;
       }
 
       body {
@@ -44,23 +74,57 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         flex-direction: column;
         min-height: 100vh;
         overscroll-behavior: none;
+        overflow-x: clip;
       }
 
-      /* Utilidades de Tailwind personalizadas via CSS */
+      h1, h2, h3, h4 {
+        text-wrap: balance;
+      }
+
+      p {
+        text-wrap: pretty;
+      }
+
+      /* Utilidades personalizadas */
       .bg-accent { background-color: var(--color-accent); }
       .text-accent { color: var(--color-accent); }
       .border-accent { border-color: var(--color-accent); }
       .hover\:bg-accent-hover:hover { background-color: var(--color-accent-hover); }
+      .tabular-nums { font-variant-numeric: tabular-nums; }
+
+      /* Subtle neutral image edge outline */
+      .img-outline {
+        outline: 1px solid rgba(255, 255, 255, 0.1);
+        outline-offset: -1px;
+      }
 
       /* Glint Heading Styles */
       .glint-subheading {
         color: var(--color-accent);
         font-size: 0.85rem;
         text-transform: uppercase;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.18em;
         font-weight: 700;
         margin-bottom: 0.5rem;
         display: block;
+      }
+
+      /* Drifting dot-grid background texture (nothing dead-still) */
+      .motion-dot-grid {
+        position: absolute;
+        inset: -36px;
+        opacity: 0.28;
+        background-image: radial-gradient(circle, rgba(240, 238, 230, 0.24) 1px, transparent 1px);
+        background-size: 36px 36px;
+        -webkit-mask-image: radial-gradient(ellipse 68% 62% at 50% 45%, #000 15%, transparent 80%);
+        mask-image: radial-gradient(ellipse 68% 62% at 50% 45%, #000 15%, transparent 80%);
+        animation: dotDrift 28s linear infinite;
+        will-change: transform;
+      }
+
+      @keyframes dotDrift {
+        from { transform: translate3d(0, 0, 0); }
+        to { transform: translate3d(-36px, -36px, 0); }
       }
 
       /* Custom Scrollbar */
@@ -71,43 +135,166 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         background: #111111;
       }
       ::-webkit-scrollbar-thumb {
-        background: #333;
+        background: #2b2b2b;
         border-radius: 5px;
       }
       ::-webkit-scrollbar-thumb:hover {
         background: var(--color-accent);
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
+      /* Masked Hero Line Reveal (claude-motion Mask primitive) */
+      .mask-line {
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: bottom;
+        padding: 0.04em 0.04em 0.12em;
+        margin: -0.04em -0.04em -0.12em;
+      }
+
+      .mask-line-inner {
+        display: inline-block;
+        animation: maskRise 0.65s var(--ease-out) both;
+        animation-delay: var(--delay, 0ms);
+      }
+
+      @keyframes maskRise {
+        from {
+          opacity: 0.85;
+          transform: translate3d(0, 28%, 0) rotate(1deg);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0) rotate(0deg);
         }
       }
 
+      .hero-enter {
+        animation: heroFadeUp 0.55s var(--ease-out) both;
+        animation-delay: var(--delay, 0ms);
+      }
+
+      @keyframes heroFadeUp {
+        from {
+          opacity: 0.75;
+          transform: translate3d(0, 12px, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      /* Scroll-triggered section reveal with claude-motion easeOut */
       .reveal {
         opacity: 0;
-        transform: translateY(30px);
-        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translate3d(0, 16px, 0);
+        transition-property: opacity, transform;
+        transition-duration: 0.58s;
+        transition-timing-function: var(--ease-out);
       }
 
       .reveal.active {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
+      }
+
+      /* Card interactive tactile surface */
+      .motion-card {
+        transition-property: transform, border-color, background-color, box-shadow;
+        transition-duration: 240ms;
+        transition-timing-function: var(--ease-out);
+      }
+
+      .motion-card:hover {
+        transform: translate3d(0, -3px, 0);
+        border-color: rgba(57, 181, 74, 0.35);
+      }
+
+      /* Tactile button feel */
+      .motion-btn {
+        transition-property: transform, background-color, border-color, box-shadow, color;
+        transition-duration: 180ms;
+        transition-timing-function: var(--ease-out);
+      }
+
+      .motion-btn:hover {
+        transform: translate3d(0, -1px, 0);
+      }
+
+      .motion-btn:active {
+        transform: scale(0.97);
+        transition-duration: 100ms;
+        transition-timing-function: var(--ease-in);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .motion-dot-grid,
+        .mask-line-inner,
+        .hero-enter {
+          animation: none !important;
+          opacity: 1 !important;
+          transform: none !important;
+          filter: none !important;
+        }
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+          filter: none !important;
+          transition: none !important;
+        }
       }
     </style>
 
     <script>
+      // Scroll-reveal observer (fires once cleanly per element)
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
+            observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.05, rootMargin: '0px 0px -24px 0px' });
+
+      function revealVisibleNow() {
+        document.querySelectorAll('.reveal:not(.active)').forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.98) {
+            el.classList.add('active');
+            observer.unobserve(el);
+          }
+        });
+      }
 
       document.querySelectorAll('.reveal').forEach((el) => {
         observer.observe(el);
       });
+      requestAnimationFrame(revealVisibleNow);
+      window.addEventListener('hashchange', () => setTimeout(revealVisibleNow, 60));
+
+      // Scroll-linked progress hairline driven via rAF on compositor
+      const progressBar = document.getElementById('scroll-progress');
+      let ticking = false;
+
+      function updateScrollProgress() {
+        ticking = false;
+        revealVisibleNow();
+        if (!progressBar) return;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? Math.min(1, Math.max(0, window.scrollY / docHeight)) : 0;
+        progressBar.style.transform = `scaleX(${progress})`;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(updateScrollProgress);
+          ticking = true;
+        }
+      }, { passive: true });
+      updateScrollProgress();
     </script>
   </body>
 </html>

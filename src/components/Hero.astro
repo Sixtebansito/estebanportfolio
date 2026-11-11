@@ -12,44 +12,65 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between pt-24 md:pt-32 pb-16 gap-12">
     <!-- Left Content -->
     <div class="flex flex-col gap-6 max-w-2xl">
-      <span class="glint-subheading reveal" data-i18n="hero.sub">Bienvenido a mi mundo</span>
+      <span class="glint-subheading hero-enter" style="--delay: 0ms;" data-i18n="hero.sub">Bienvenido a mi mundo</span>
       
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-tight reveal" style="animation-delay: 200ms;">
-        <span data-i18n="hero.greeting">Hola, soy Esteban.</span><br />
-        <span class="text-white/60 font-medium text-3xl md:text-5xl lg:text-6xl tracking-tight block mt-2" data-i18n="hero.tagline">
-          Estudiante de software & <span class="text-accent">solucionador de problemas.</span>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[1.04]">
+        <span class="mask-line">
+          <span class="mask-line-inner" style="--delay: 40ms;" data-i18n="hero.greeting">Hola, soy Esteban.</span>
+        </span>
+        <span class="mask-line block mt-2">
+          <span
+            class="mask-line-inner text-white/65 font-medium text-3xl md:text-5xl lg:text-6xl tracking-tight"
+            style="--delay: 110ms;"
+            data-i18n="hero.tagline"
+          >
+            Estudiante de software & <span class="text-accent">solucionador de problemas.</span>
+          </span>
         </span>
       </h1>
       
-      <div class="flex flex-wrap gap-4 mt-8 reveal" style="animation-delay: 400ms;">
+      <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3.5 mt-6 hero-enter" style="--delay: 160ms;">
         <!-- Botón Descargar CV (Español / Dinámico) -->
-        <a id="hero-cv-btn" href={`${baseUrl}cv.pdf`} download="Esteban_Munoz_CV_ES.pdf" class="px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold bg-accent hover:bg-accent-hover transition-all rounded-sm flex items-center justify-center gap-2.5 shadow-lg hover:shadow-accent/30">
+        <a
+          id="hero-cv-btn"
+          href={`${baseUrl}cv.pdf`}
+          download="Esteban_Munoz_CV_ES.pdf"
+          class="motion-btn w-full sm:w-auto px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold bg-accent hover:bg-accent-hover rounded-sm flex items-center justify-center gap-2.5 shadow-lg hover:shadow-accent/30"
+        >
           <svg class="size-5 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
           <span data-i18n="hero.cv_btn">Descargar CV (ES)</span>
         </a>
 
         <!-- Botón Descargar CV en Inglés -->
-        <a id="hero-cv-en-btn" href={`${baseUrl}cv_en.pdf`} download="Esteban_Munoz_CV_EN.pdf" class="px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold border-2 border-accent/60 hover:border-accent hover:bg-accent/10 transition-all rounded-sm flex items-center justify-center gap-2.5">
+        <a
+          id="hero-cv-en-btn"
+          href={`${baseUrl}cv_en.pdf`}
+          download="Esteban_Munoz_CV_EN.pdf"
+          class="motion-btn w-full sm:w-auto px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold border-2 border-accent/60 hover:border-accent hover:bg-accent/10 rounded-sm flex items-center justify-center gap-2.5"
+        >
           <svg class="size-4 shrink-0 text-accent" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
           <span data-i18n="hero.cv_en_btn">Download CV (EN)</span>
         </a>
 
         <!-- Botón Más sobre mí -->
-        <a href="#sobre-mi" class="px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold border-2 border-white/20 hover:border-white transition-colors rounded-sm flex items-center justify-center">
+        <a
+          href="#sobre-mi"
+          class="motion-btn w-full sm:w-auto px-6 py-4 text-white uppercase tracking-widest text-xs sm:text-sm font-bold border-2 border-white/20 hover:border-white rounded-sm flex items-center justify-center"
+        >
           <span data-i18n="hero.about_btn">Más sobre mí</span>
         </a>
       </div>
       
-      <div class="mt-12 reveal" style="animation-delay: 600ms;">
+      <div class="mt-10 hero-enter" style="--delay: 220ms;">
         <Social />
       </div>
     </div>
 
     <!-- Right Content: Profile Picture -->
-    <div class="relative group reveal" style="animation-delay: 800ms;">
-      <div class="absolute inset-0 transition-opacity duration-500 rounded-full opacity-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-xl group-hover:opacity-60 animate-pulse"></div>
+    <div class="relative group hero-enter" style="--delay: 120ms;">
+      <div class="absolute -inset-3 transition-opacity duration-500 rounded-full opacity-25 group-hover:opacity-65 bg-accent/25 blur-2xl"></div>
       <img
-        class="relative rounded-full shadow-2xl size-56 md:size-72 lg:size-80 object-cover border-4 border-white/10 transition-transform duration-500 group-hover:scale-105"
+        class="relative rounded-full shadow-2xl size-56 md:size-72 lg:size-80 object-cover border-4 border-white/15 img-outline transition-transform duration-300 ease-out group-hover:scale-[1.03]"
         src={Image.src}
         alt="Foto de Esteban"
       />
@@ -57,10 +78,10 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   </div>
 
   <!-- Scroll Down Indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 reveal opacity-50 hover:opacity-100 transition-opacity">
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-enter opacity-60 hover:opacity-100 transition-opacity duration-200" style="--delay: 280ms;">
     <span class="uppercase tracking-[0.2em] text-xs font-bold text-accent" data-i18n="hero.scroll">Scroll</span>
     <div class="w-[2px] h-12 bg-white/20 relative overflow-hidden">
-      <div class="absolute top-0 left-0 w-full h-1/2 bg-accent animate-[scrolldown_1.5s_ease-in-out_infinite]"></div>
+      <div class="absolute top-0 left-0 w-full h-1/2 bg-accent animate-[scrolldown_1.8s_cubic-bezier(0.65,0,0.35,1)_infinite]"></div>
     </div>
   </div>
 </section>

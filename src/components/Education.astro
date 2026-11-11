@@ -1,0 +1,182 @@
+---
+const DEGREES = [
+  {
+    key: "deg0",
+    title: "Desarrollo de Software",
+    institution: "Pontificia Universidad Católica del Ecuador (PUCE)",
+    date: "2025 - Presente",
+    tag: "En curso",
+    active: true,
+    description:
+      "Formación orientada a arquitectura de software, estructuras de datos, bases de datos, desarrollo full-stack e ingeniería aplicada.",
+  },
+  {
+    key: "deg1",
+    title: "Licenciatura en Negocios Internacionales",
+    institution: "Universidad De Las Américas (UDLA)",
+    date: "Graduado",
+    tag: "Título Universitario",
+    active: false,
+    description:
+      "Enfoque estratégico en comercio exterior, finanzas, gestión logística, negociación y alineación tecnológica con objetivos comerciales.",
+  },
+  {
+    key: "deg2",
+    title: "Bachiller en Ciencias",
+    institution: "Unidad Educativa San Luis Gonzaga",
+    date: "2014 - 2020",
+    tag: "Secundaria",
+    active: false,
+  },
+];
+
+const CERTIFICATIONS = [
+  {
+    key: "cert0",
+    title: "Full Stack Cloud Developer",
+    issuer: "IBM Professional Certificate · 2025",
+    badge: "IBM",
+  },
+  {
+    key: "cert1",
+    title: "Azure Cloud Services",
+    issuer: "Microsoft Certified · 2025",
+    badge: "AZ",
+  },
+  {
+    key: "cert2",
+    title: "Google Cloud Fundamentals",
+    issuer: "Google Cloud Core Infrastructure · 2025",
+    badge: "GCP",
+  },
+  {
+    key: "cert3",
+    title: "Django Application Development",
+    issuer: "SQL & Bases de Datos · IBM · 2025",
+    badge: "PY",
+  },
+  {
+    key: "cert4",
+    title: "Certificación de Inglés C1",
+    issuer: "EF Education First · FCE C1.3 · 2018",
+    badge: "C1",
+  },
+];
+---
+
+<section id="estudios" class="relative py-28 px-6 bg-[#111111]/75 backdrop-blur-sm border-y border-white/5">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-14 reveal">
+      <span class="glint-subheading" data-i18n="edu.sub">Formación Académica</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mt-2" data-i18n="edu.title">
+        Estudios y <span class="text-accent">certificaciones.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+      <!-- Degrees Column -->
+      <div class="lg:col-span-7 space-y-5">
+        <h3
+          class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-4 reveal"
+          data-i18n="edu.academic.heading"
+        >
+          Educación Superior & Base Académica
+        </h3>
+
+        {DEGREES.map((deg, idx) => (
+          <article
+            class="reveal motion-card p-6 rounded-2xl bg-[#171716]/90 border border-white/10 shadow-lg"
+            style={`transition-delay: ${idx * 75}ms;`}
+          >
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-2">
+              <div>
+                <h4
+                  class="text-xl font-bold text-white leading-snug"
+                  data-i18n={`edu.${deg.key}.title`}
+                >
+                  {deg.title}
+                </h4>
+                <p
+                  class="text-sm font-medium text-accent mt-0.5"
+                  data-i18n={`edu.${deg.key}.inst`}
+                >
+                  {deg.institution}
+                </p>
+              </div>
+
+              <div class="flex items-center gap-2 shrink-0">
+                <span
+                  class={`px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider border ${
+                    deg.active
+                      ? "bg-accent/15 text-accent border-accent/40"
+                      : "bg-white/5 text-gray-300 border-white/15"
+                  }`}
+                  data-i18n={`edu.${deg.key}.tag`}
+                >
+                  {deg.tag}
+                </span>
+                <time
+                  class="tabular-nums text-xs font-medium text-gray-400"
+                  data-i18n={`edu.${deg.key}.date`}
+                >
+                  {deg.date}
+                </time>
+              </div>
+            </div>
+
+            {deg.description && (
+              <p
+                class="text-sm text-gray-400 leading-relaxed mt-3"
+                data-i18n={`edu.${deg.key}.desc`}
+              >
+                {deg.description}
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+
+      <!-- Certifications Column -->
+      <div class="lg:col-span-5">
+        <div class="p-6 rounded-2xl bg-[#171716]/90 border border-white/10 shadow-xl reveal" style="transition-delay: 120ms;">
+          <h3
+            class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-5"
+            data-i18n="edu.certs.heading"
+          >
+            Certificaciones Técnicas & Idiomas
+          </h3>
+
+          <ul class="space-y-3">
+            {CERTIFICATIONS.map((cert, idx) => (
+              <li
+                class="reveal motion-card flex items-center gap-4 p-3.5 rounded-xl bg-[#1f1e1c]/80 border border-white/8"
+                style={`transition-delay: ${(idx + 1) * 65}ms;`}
+              >
+                <span
+                  aria-hidden="true"
+                  class="size-10 rounded-lg bg-accent/12 border border-accent/30 text-accent text-xs font-extrabold tracking-wider flex items-center justify-center shrink-0 tabular-nums"
+                >
+                  {cert.badge}
+                </span>
+                <div class="min-w-0">
+                  <h4
+                    class="text-sm font-bold text-white leading-snug"
+                    data-i18n={`edu.${cert.key}.title`}
+                  >
+                    {cert.title}
+                  </h4>
+                  <p
+                    class="text-xs text-gray-400 mt-0.5 tabular-nums"
+                    data-i18n={`edu.${cert.key}.issuer`}
+                  >
+                    {cert.issuer}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
