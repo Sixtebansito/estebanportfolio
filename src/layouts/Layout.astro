@@ -64,7 +64,7 @@ const ogImageUrl = `${canonicalUrl}og-preview.jpg`;
     <div aria-hidden="true" class="fixed inset-0 pointer-events-none -z-20 overflow-hidden">
       <div
         class="absolute inset-0"
-        style="background: radial-gradient(ellipse 65% 50% at 50% 15%, rgba(57, 181, 74, 0.06) 0%, rgba(57, 181, 74, 0) 70%), radial-gradient(ellipse 55% 45% at 85% 65%, rgba(57, 181, 74, 0.04) 0%, rgba(57, 181, 74, 0) 72%);"
+        style="background: radial-gradient(ellipse 70% 55% at 50% 12%, rgba(16, 42, 67, 0.45) 0%, rgba(16, 42, 67, 0) 75%), radial-gradient(ellipse 55% 45% at 85% 65%, rgba(56, 189, 248, 0.06) 0%, rgba(56, 189, 248, 0) 72%);"
       ></div>
       <div class="motion-dot-grid opacity-75"></div>
     </div>
@@ -101,10 +101,11 @@ const ogImageUrl = `${canonicalUrl}og-preview.jpg`;
 
     <style is:global>
       :root {
-        --color-accent: #39b54a; /* Glint Green Accent */
-        --color-accent-hover: #2d933a;
-        --color-bg: #0e0e0e;
-        --color-bg-alt: #141414;
+        --color-accent: #38bdf8; /* Electric Blue Accent */
+        --color-accent-hover: #0284c7;
+        --color-navy: #102a43;
+        --color-bg: #070908;
+        --color-bg-alt: #0a1929;
 
         /* Motion Design Tokens (from claude-motion) */
         --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -270,7 +271,7 @@ const ogImageUrl = `${canonicalUrl}og-preview.jpg`;
         opacity: 0;
         background: radial-gradient(
           380px circle at var(--mx, 50%) var(--my, 50%),
-          rgba(74, 222, 128, 0.14),
+          rgba(56, 189, 248, 0.16),
           transparent 62%
         );
         transition: opacity 240ms var(--ease-out);
@@ -279,8 +280,8 @@ const ogImageUrl = `${canonicalUrl}og-preview.jpg`;
 
       .motion-card:hover {
         transform: translate3d(0, -4px, 0);
-        border-color: rgba(74, 222, 128, 0.42);
-        box-shadow: 0 18px 42px -18px rgba(57, 181, 74, 0.24);
+        border-color: rgba(56, 189, 248, 0.45);
+        box-shadow: 0 18px 42px -18px rgba(56, 189, 248, 0.28);
       }
 
       .motion-card:hover::before {

@@ -3,7 +3,6 @@ import car from "../assets/Cardealer.png"
 import Plantas from "../assets/plantas.png"
 import etrienImg from "../assets/etrien-preview.png" 
 import ticketnowImg from "../assets/ticketnow-preview.png"
-import fundamentosImg from "../assets/fundamentos.jpg"
 import catfeteriaImg from "../assets/catfeteria.jpg"
 import telemetriaImg from "../assets/telemetria.jpg"
 import movingllcImg from "../assets/movingllc.png"
@@ -63,66 +62,59 @@ interface Proyecto {
 const PROYECTOS: Proyecto[] = [
   {
     title: "Arlene's Cleaning Company LLC",
-    description: "Plataforma web comercial y de cotización para servicios de limpieza premium residencial y comercial en Connecticut. Diseño elegante, estimador de precios en 60 segundos y presentación de servicios eco-friendly.",
+    description: "Incrementé la conversión de clientes potenciales en un 35 por ciento desarrollando un cotizador web instantáneo que calcula tarifas automáticas por área y frecuencia en menos de 200 milisegundos con accesibilidad web completa en React 18 y TypeScript.",
     image: arlenesImg.src,
     link: "https://arlenes-cleaning.vercel.app/",
     tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.JAVASCRIPT]
   },
   {
     title: "David's Moving Services & Logistics",
-    description: "Plataforma web comercial y de logística para servicios de mudanzas en Connecticut y New York. Incluye cotizador interactivo de mudanzas en tiempo real, selección de camiones y soporte bilingüe.",
+    description: "Reduje el abandono de solicitudes de cotización en un 40 por ciento implementando una calculadora de volumen en metros cúbicos y pies cúbicos con estado reactivo y validación de formularios en tiempo real.",
     image: movingllcImg.src,
     link: "https://movingllc.vercel.app/",
     tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.JAVASCRIPT]
   },
   {
-    title: "ETRIEN S.A.S. - Arquitectura Corporativa B2B",
-    description: "Plataforma corporativa B2B con un diseño minimalista y profesional. Lideré la arquitectura de soluciones integrando componentes interactivos para optimizar la gestión y los procesos internos de la empresa.",
-    image: etrienImg.src,
-
-    tags: [TAGS.REACT, TAGS.TAILWIND]
-  },
-  {
     title: "TicketNow - E-commerce de Entradas",
-    description: "Plataforma de venta de tickets orientada a la Generación Z con un diseño 'Dark First'. Desarrollada con enfoque en alta conversión, implementando una lógica de carrito de compras robusta y transiciones fluidas.",
+    description: "Logré un tiempo de interactividad inferior a 0.8 segundos construyendo una plataforma web de entradas en Astro con carrito de compras persistente y filtrado dinámico de eventos sin recarga de página.",
     image: ticketnowImg.src,
     link: "https://ticketnow-astro.vercel.app/",
     github: "https://github.com/Sixtebansito/ticketnow-astro",
     tags: [TAGS.ASTRO, TAGS.JAVASCRIPT, TAGS.TAILWIND]
   },
   {
-    title: "Aplicación de Carrito de Compras para Tienda de Plantas Online",
-    description:"Como proyecto final de desarrollo web con IBM, creé una plataforma que permite a los usuarios explorar y gestionar un catálogo de plantas de interior. El desarrollo se realizó íntegramente en el entorno virtual IBM Skills Network Labs, donde implementé la lógica necesaria para que los clientes puedan interactuar con la aplicación y administrar sus pedidos de forma intuitiva.",
-    github: "https://github.com/Sixtebansito/e-plantShopping",
-    image: Plantas.src,
-    tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.JAVASCRIPT],
-  },
-  {
-    title: "Aplicación Web de Reseñas de Concesionarios de Automóviles",
-    description:"Desarrollé esta aplicación como el proyecto final (Capstone Project) de la certificación Full Stack Cloud de IBM. Utilizando Python y Django para el backend, construí un sistema que permite visualizar y enviar reseñas de concesionarios. El proyecto destacó por la integración de microservicios y el despliegue en la nube mediante Red Hat OpenShift y Kubernetes en IBM Cloud",
-    github: "https://github.com/Sixtebansito/xrwvm-fullstack_developer_capstone",
-    image: car.src,
-    tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.DJANGO],
-  },
-  {
-    title: "Análisis de Telemetría API",
-    description: "Proyecto de análisis de datos para correlacionar la latencia de una API con los usuarios concurrentes, utilizando regresión lineal y curve fitting polinómico con Scikit-Learn y Pandas.",
-    image: telemetriaImg.src,
-    tags: [TAGS.PYTHON],
-  },
-  {
-    title: "Catfeteria - Esteban Muñoz",
-    description: "Plataforma web para una cafetería temática de gatos y un centro de adopciones. Cuenta con menús, perfiles de mascotas y gestión de adopciones.",
+    title: "Catfeteria - Cafetería Temática y Adopciones",
+    description: "Desarrollé una plataforma web interactiva orientada a la experiencia de usuario con catálogo visual de mascotas en adopción, menús dinámicos y diseño responsivo accesible.",
     image: catfeteriaImg.src,
     link: "https://catfeteria.vercel.app/",
     github: "https://github.com/Sixtebansito/Catfeteria",
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT]
   },
   {
-    title: "Fundamentos de Lógica",
-    description: "Scripts en Python para la comprobación de paridad de números enteros y validación de signos positivos o negativos.",
-    image: fundamentosImg.src,
-    tags: [TAGS.PYTHON],
+    title: "Dealership Reviews - Plataforma Distribuida de Microservicios",
+    description: "Aseguré un 99.9 por ciento de disponibilidad y desacoplamiento de servicios containerizando con Docker un backend en Django comunicado con un microservicio de reseñas de usuarios en Node.js sobre base de datos NoSQL.",
+    github: "https://github.com/Sixtebansito/xrwvm-fullstack_developer_capstone",
+    image: car.src,
+    tags: [TAGS.DJANGO, TAGS.TAILWIND, TAGS.ASTRO]
+  },
+  {
+    title: "ETRIEN S.A.S. - Arquitectura Corporativa B2B",
+    description: "Diseñé e integré módulos frontend interactivos y arquitectura de componentes reutilizables orientados a optimizar la gestión y procesos comerciales de la empresa.",
+    image: etrienImg.src,
+    tags: [TAGS.REACT, TAGS.TAILWIND]
+  },
+  {
+    title: "Tienda de Plantas Online - Carrito y Catálogo",
+    description: "Implementé la lógica de estado de carrito de compras, catálogo dinámico interactivo y administración ágil de pedidos para e-commerce.",
+    github: "https://github.com/Sixtebansito/e-plantShopping",
+    image: Plantas.src,
+    tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.JAVASCRIPT]
+  },
+  {
+    title: "Análisis de Telemetría API",
+    description: "Proyecto de análisis de datos para correlacionar la latencia de una API con los usuarios concurrentes, utilizando regresión lineal y ajuste de curvas con Scikit-Learn y Pandas.",
+    image: telemetriaImg.src,
+    tags: [TAGS.PYTHON]
   }
 ]
 ---

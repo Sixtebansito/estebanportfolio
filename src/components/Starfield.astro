@@ -79,7 +79,7 @@
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
         ctx.fillStyle = s.isAccent
-          ? `rgba(74, 222, 128, ${s.baseAlpha})`
+          ? `rgba(56, 189, 248, ${s.baseAlpha})`
           : `rgba(248, 250, 252, ${s.baseAlpha})`;
         ctx.fill();
       }
@@ -130,7 +130,7 @@
 
         if (s.hasHalo) {
           const halo = ctx.createRadialGradient(px, py, 0, px, py, drawRadius * 4.2);
-          halo.addColorStop(0, s.isAccent ? `rgba(74, 222, 128, ${alpha * 0.4})` : `rgba(255, 255, 255, ${alpha * 0.25})`);
+          halo.addColorStop(0, s.isAccent ? `rgba(56, 189, 248, ${alpha * 0.4})` : `rgba(255, 255, 255, ${alpha * 0.25})`);
           halo.addColorStop(1, 'rgba(0, 0, 0, 0)');
           ctx.beginPath();
           ctx.arc(px, py, drawRadius * 4.2, 0, Math.PI * 2);
@@ -141,12 +141,12 @@
         ctx.beginPath();
         ctx.arc(px, py, drawRadius, 0, Math.PI * 2);
         ctx.fillStyle = s.isAccent
-          ? `rgba(74, 222, 128, ${alpha})`
+          ? `rgba(56, 189, 248, ${alpha})`
           : `rgba(248, 250, 252, ${alpha})`;
         ctx.fill();
       }
 
-      // Delicate emerald constellation web near pointer (up to 16 stars for O(1) cost)
+      // Delicate electric blue constellation web near pointer (up to 16 stars for O(1) cost)
       if (nearCursor.length > 1) {
         const cap = Math.min(nearCursor.length, 16);
         ctx.lineWidth = 0.7;
@@ -163,7 +163,7 @@
                 ctx.beginPath();
                 ctx.moveTo(a.px, a.py);
                 ctx.lineTo(b.px, b.py);
-                ctx.strokeStyle = `rgba(74, 222, 128, ${lineAlpha})`;
+                ctx.strokeStyle = `rgba(56, 189, 248, ${lineAlpha})`;
                 ctx.stroke();
               }
             }
@@ -185,8 +185,8 @@
           shootingStar.y - shootingStar.vy * 8
         );
         grad.addColorStop(0, `rgba(255, 255, 255, ${opacity * 0.95})`);
-        grad.addColorStop(0.35, `rgba(74, 222, 128, ${opacity * 0.65})`);
-        grad.addColorStop(1, 'rgba(57, 181, 74, 0)');
+        grad.addColorStop(0.35, `rgba(56, 189, 248, ${opacity * 0.65})`);
+        grad.addColorStop(1, 'rgba(16, 42, 67, 0)');
 
         ctx.beginPath();
         ctx.moveTo(shootingStar.x, shootingStar.y);

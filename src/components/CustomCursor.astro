@@ -1,4 +1,4 @@
-<!-- Custom Interactive Emerald Precision Pointer & Click Sparks (Desktop fine-pointer only) -->
+<!-- Custom Interactive Electric Blue Precision Pointer & Click Sparks (Desktop fine-pointer only) -->
 <div id="custom-cursor-layer" aria-hidden="true" class="hidden pointer-events-none fixed inset-0 z-[9999]">
   <canvas id="cursor-sparks" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
   <div id="cursor-ring" class="custom-cursor-ring">
@@ -31,8 +31,8 @@
       height: 8px;
       margin: -4px 0 0 -4px;
       border-radius: 9999px;
-      background: #4ade80;
-      box-shadow: 0 0 10px rgba(74, 222, 128, 0.9), 0 0 2px #ffffff;
+      background: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.9), 0 0 2px #ffffff;
       pointer-events: none;
       opacity: 0;
       transition: opacity 150ms ease, background-color 150ms ease;
@@ -47,8 +47,8 @@
       height: 34px;
       margin: -17px 0 0 -17px;
       border-radius: 9999px;
-      border: 1.5px solid rgba(74, 222, 128, 0.6);
-      background: rgba(57, 181, 74, 0.04);
+      border: 1.5px solid rgba(56, 189, 248, 0.6);
+      background: rgba(16, 42, 67, 0.18);
       pointer-events: none;
       opacity: 0;
       transition: opacity 180ms ease, border-color 180ms ease, background-color 180ms ease, border-radius 180ms ease;
@@ -57,7 +57,7 @@
 
     .custom-cursor-tick {
       position: absolute;
-      background: rgba(74, 222, 128, 0.85);
+      background: rgba(56, 189, 248, 0.85);
       transition: opacity 160ms ease, transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
       opacity: 0.45;
     }
@@ -72,9 +72,9 @@
     }
 
     #custom-cursor-layer.is-interactive .custom-cursor-ring {
-      border-color: rgba(74, 222, 128, 0.95);
-      background: rgba(57, 181, 74, 0.14);
-      box-shadow: 0 0 20px rgba(57, 181, 74, 0.25);
+      border-color: rgba(56, 189, 248, 0.95);
+      background: rgba(16, 42, 67, 0.35);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
     }
 
     #custom-cursor-layer.is-interactive .custom-cursor-tick {
@@ -82,8 +82,8 @@
     }
 
     #custom-cursor-layer.is-card .custom-cursor-ring {
-      border-color: rgba(74, 222, 128, 0.75);
-      background: rgba(57, 181, 74, 0.08);
+      border-color: rgba(56, 189, 248, 0.75);
+      background: rgba(16, 42, 67, 0.25);
     }
   }
 </style>
@@ -144,7 +144,7 @@
           life: 0,
           maxLife: 24 + Math.floor(Math.random() * 8),
           size: 1.6 + Math.random() * 1.4,
-          green: i % 2 === 0,
+          isAccent: i % 2 === 0,
         });
       }
     }
@@ -189,8 +189,8 @@
           const alpha = Math.max(0, 1 - p.life / p.maxLife);
           sctx.beginPath();
           sctx.arc(p.x, p.y, p.size * (0.4 + 0.6 * alpha), 0, Math.PI * 2);
-          sctx.fillStyle = p.green
-            ? `rgba(74, 222, 128, ${alpha})`
+          sctx.fillStyle = p.isAccent
+            ? `rgba(56, 189, 248, ${alpha})`
             : `rgba(255, 255, 255, ${alpha * 0.9})`;
           sctx.fill();
           if (p.life >= p.maxLife) sparks.splice(i, 1);
