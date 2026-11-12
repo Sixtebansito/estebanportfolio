@@ -19,40 +19,43 @@
         .a4-page {
             width: 210mm;
             min-height: 297mm;
+            height: 297mm;
+            max-height: 297mm;
             background: white;
             margin: 0 auto;
             box-shadow: none;
             box-sizing: border-box;
             display: flex;
             flex-direction: row;
+            overflow: hidden;
         }
 
-        /* Left Column */
+        /* Left Column (Sidebar) */
         .sidebar {
             width: 35%;
             background-color: #111111;
             color: #f3f4f6;
-            padding: 30px 22px;
+            padding: 22px 20px;
             box-sizing: border-box;
         }
 
         .sidebar h2 {
             color: #39b54a;
-            font-size: 14px;
+            font-size: 13.5px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin-top: 20px;
-            margin-bottom: 12px;
+            margin-top: 15px;
+            margin-bottom: 8px;
             border-bottom: 1px solid #333;
             padding-bottom: 4px;
         }
 
         .contact-item {
-            font-size: 11.5px;
-            margin-bottom: 7px;
+            font-size: 11px;
+            margin-bottom: 5.5px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
         }
 
         .contact-item a {
@@ -60,34 +63,58 @@
             text-decoration: none;
         }
 
-        .skill-item {
-            font-size: 12px;
-            margin-bottom: 6px;
-            display: flex;
-            justify-content: space-between;
+        .contact-item a:hover {
+            color: #39b54a;
+            text-decoration: underline;
         }
 
-        .education-item, .cert-item {
-            margin-bottom: 11px;
+        .cert-item {
+            margin-bottom: 7px;
         }
         
-        .education-item h3, .cert-item h3 {
-            font-size: 12.5px;
+        .cert-item h3 {
+            font-size: 12px;
             font-weight: 600;
             margin: 0 0 2px 0;
             color: #fff;
         }
 
-        .education-item p, .cert-item p {
-            font-size: 11.5px;
+        .cert-item p {
+            font-size: 11px;
             margin: 0;
             color: #9ca3af;
         }
 
-        /* Right Column */
+        .skill-item {
+            font-size: 11.2px;
+            margin-bottom: 4.5px;
+            line-height: 1.35;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .education-item {
+            margin-bottom: 7.5px;
+        }
+        
+        .education-item h3 {
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0 0 2px 0;
+            color: #fff;
+            line-height: 1.25;
+        }
+
+        .education-item p {
+            font-size: 11px;
+            margin: 0;
+            color: #9ca3af;
+        }
+
+        /* Right Column (Main Content) */
         .main-content {
             width: 65%;
-            padding: 30px 28px;
+            padding: 18px 22px;
             box-sizing: border-box;
         }
 
@@ -95,12 +122,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 15px;
-            margin-bottom: 12px;
+            gap: 14px;
+            margin-bottom: 8px;
         }
 
         .header-name {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
             color: #111111;
             margin: 0 0 4px 0;
@@ -108,43 +135,44 @@
         }
 
         .header-title {
-            font-size: 14px;
+            font-size: 13.5px;
             color: #39b54a;
             font-weight: 600;
             margin: 0;
         }
 
         .header-avatar {
-            width: 76px;
-            height: 76px;
+            width: 68px;
+            height: 68px;
             border-radius: 50%;
-            object-fit: cover; object-position: center 20%;
+            object-fit: cover;
+            object-position: center 20%;
             border: 2.5px solid #39b54a;
             box-shadow: none;
             flex-shrink: 0;
         }
 
         .profile-text {
-            font-size: 12px;
-            line-height: 1.5;
+            font-size: 11px;
+            line-height: 1.35;
             color: #4b5563;
-            margin: 0 0 16px 0;
+            margin: 0 0 9px 0;
             text-align: justify;
         }
 
         .main-content h2 {
-            font-size: 15px;
+            font-size: 13.5px;
             color: #111111;
             text-transform: uppercase;
             letter-spacing: 1px;
             border-bottom: 2px solid #39b54a;
-            padding-bottom: 4px;
+            padding-bottom: 2px;
             margin-top: 0;
-            margin-bottom: 12px;
+            margin-bottom: 7px;
         }
 
         .job {
-            margin-bottom: 12px;
+            margin-bottom: 7px;
         }
 
         .job-header {
@@ -155,7 +183,7 @@
         }
 
         .job-title {
-            font-size: 13.5px;
+            font-size: 12.2px;
             font-weight: 700;
             color: #1f2937;
         }
@@ -167,27 +195,39 @@
         }
 
         .job-company {
-            font-size: 12px;
+            font-size: 11px;
             color: #39b54a;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 1.5px;
         }
 
         .job-desc {
-            font-size: 11.5px;
-            line-height: 1.45;
+            font-size: 10.6px;
+            line-height: 1.32;
             color: #4b5563;
             margin: 0;
         }
 
         .project {
-            margin-bottom: 9px;
+            margin-bottom: 5.5px;
         }
 
         .project-title {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             color: #1f2937;
+        }
+
+        .project-link {
+            font-size: 11px;
+            color: #39b54a;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
         }
         
         .project-tech {
@@ -197,13 +237,13 @@
         }
 
         .project-desc {
-            font-size: 11.5px;
-            line-height: 1.4;
+            font-size: 10.6px;
+            line-height: 1.3;
             color: #4b5563;
-            margin: 2px 0 0 0;
+            margin: 1.5px 0 0 0;
         }
 
-        /* Print adjustments for exact 1-page output */
+        /* Strict Print Styles for Exact 1-Page Output */
         @page {
             size: 210mm 297mm;
             margin: 0;
@@ -237,9 +277,9 @@
             <div class="contact-item">📍 Quito, Ecuador (Hybrid Available)</div>
             <div class="contact-item">📧 <a href="mailto:dannygghhm@gmail.com">dannygghhm@gmail.com</a></div>
             <div class="contact-item">📱 (+593) 0983958430</div>
-            <div class="contact-item">🌐 <a href="https://sixtebansito.github.io/estebanportfolio/" target="_blank">Online Portfolio</a></div>
-            <div class="contact-item">💻 <a href="https://github.com/Sixtebansito" target="_blank">github.com/Sixtebansito</a></div>
-            <div class="contact-item">🔗 <a href="https://www.linkedin.com/in/esteban-munoz-/" target="_blank">linkedin.com/in/esteban-munoz-</a></div>
+            <div class="contact-item">🌐 <a href="https://sixtebansito.github.io/estebanportfolio/" target="_blank" rel="noopener noreferrer">Online Portfolio</a></div>
+            <div class="contact-item">💻 <a href="https://github.com/Sixtebansito" target="_blank" rel="noopener noreferrer">github.com/Sixtebansito</a></div>
+            <div class="contact-item">🔗 <a href="https://www.linkedin.com/in/esteban-munoz-/" target="_blank" rel="noopener noreferrer">linkedin.com/in/esteban-munoz-</a></div>
             
             <h2>Key Certifications</h2>
             <div class="cert-item">
@@ -275,8 +315,8 @@
 
             <h2>Education</h2>
             <div class="education-item">
-                <h3>Software Development</h3>
-                <p>Pontificia Universidad Católica (2025-Pres.)</p>
+                <h3>Tecnología Universitaria en Desarrollo de Software</h3>
+                <p>Pontificia Universidad Católica (2025 - Pres.)</p>
             </div>
             <div class="education-item">
                 <h3>B.S. in International Business</h3>
@@ -308,9 +348,19 @@
                 Results-driven Junior Software Engineer combining hands-on full-stack development skills with a background in International Business and banking operational exposure. Certified in <strong>Microsoft Azure Cloud Services</strong> and <strong>IBM Full-Stack Development</strong>. Proven ability to implement performant web applications, consume remote RESTful APIs, apply Early Quality practices (unit testing, debugging, Clean Code), and enforce OWASP security fundamentals. Experienced in agile environments, cross-functional collaboration, and aligning digital solutions with core enterprise and banking objectives. Available for hybrid work in Quito (3+ days/week).
             </p>
 
+                        
             <h2>Relevant Experience</h2>
-            
+
             <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Junior Software Developer</span>
+                    <span class="job-date">Present</span>
+                </div>
+                <div class="job-company">ETRIEN S.A.S. | Quito, Ecuador</div>
+                <p class="job-desc">Development and optimization of B2B corporate web platforms, modular responsive UI components, RESTful API integrations, and scalable software solutions.</p>
+            </div>
+
+<div class="job">
                 <div class="job-header">
                     <span class="job-title">Operations & Systems Coordinator</span>
                     <span class="job-date">06/2024 - Present</span>
@@ -340,17 +390,17 @@
             <h2>Featured Technical Projects</h2>
             
             <div class="project">
-                <div class="project-title">Arlene's Cleaning Co. <a href="https://arlenes-cleaning.vercel.app/" target="_blank" style="color:#39b54a; text-decoration:none; font-size:11px;">🔗 Live Demo</a> <span class="project-tech">| React, Responsive UI, State Management</span></div>
+                <div class="project-title">Arlene's Cleaning Co. <a href="https://arlenes-cleaning.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">🔗 Live Demo</a> <span class="project-tech">| React, Responsive UI, State Management</span></div>
                 <p class="project-desc">Engineered a responsive commercial web application featuring an interactive 60-second instant estimate calculator, accessible component architecture, and bilingual data handling.</p>
             </div>
 
             <div class="project">
-                <div class="project-title">David's Moving Services & Logistics <a href="https://movingllc.vercel.app/" target="_blank" style="color:#39b54a; text-decoration:none; font-size:11px;">🔗 Live Demo</a> <span class="project-tech">| React, Tailwind, Micro-interactions</span></div>
+                <div class="project-title">David's Moving Services & Logistics <a href="https://movingllc.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">🔗 Live Demo</a> <span class="project-tech">| React, Tailwind, Micro-interactions</span></div>
                 <p class="project-desc">Developed a full commercial web platform with real-time moving cost estimator, dynamic truck selector, and responsive UI optimized for high conversion and mobile accessibility.</p>
             </div>
 
             <div class="project">
-                <div class="project-title">TicketNow - Event Ticketing Platform <a href="https://ticketnow-html.vercel.app/" target="_blank" style="color:#39b54a; text-decoration:none; font-size:11px;">🔗 Live Demo</a> <span class="project-tech">| Full-Stack, Astro, JavaScript</span></div>
+                <div class="project-title">TicketNow - Event Ticketing Platform <a href="https://ticketnow-astro.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">🔗 Live Demo</a> <span class="project-tech">| Full-Stack, Astro, JavaScript</span></div>
                 <p class="project-desc">Built a high-performance ticketing application featuring complete shopping cart state logic, checkout validation, clean modular architecture, and modern dark-first design.</p>
             </div>
 
