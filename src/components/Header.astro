@@ -1,31 +1,33 @@
 ---
+const waUrlEs =
+  "https://wa.me/593983958430?text=Hola%20Esteban%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20contigo.";
 ---
 
-<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 bg-transparent py-5">
-  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-[background-color,padding,border-color,box-shadow] duration-300 bg-transparent py-5 border-b border-transparent">
+  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center gap-4">
     <!-- Logo -->
-    <a href="#inicio" class="text-2xl font-black tracking-widest uppercase text-white hover:text-accent transition-colors">
+    <a href="#inicio" class="text-2xl font-black tracking-widest uppercase text-white hover:text-accent transition-colors shrink-0">
       Esteban<span class="text-accent">.</span>
     </a>
 
-    <!-- Navigation & Language Switcher -->
-    <div class="flex items-center gap-x-6">
-      <nav class="hidden md:flex flex-row gap-x-7 items-center">
-        <a href="#inicio" data-i18n="nav.home" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors duration-200">Inicio</a>
-        <a href="#sobre-mi" data-i18n="nav.about" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors duration-200">Sobre mí</a>
-        <a href="#estudios" data-i18n="nav.education" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors duration-200">Estudios</a>
-        <a href="#experiencia" data-i18n="nav.experience" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors duration-200">Experiencia</a>
-        <a href="#proyectos" data-i18n="nav.projects" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors duration-200">Proyectos</a>
-        <a href="#contacto" data-i18n="nav.contact" class="text-sm font-bold uppercase tracking-wider text-white hover:text-accent transition-colors duration-200">Contacto</a>
-      </nav>
+    <!-- Desktop Navigation -->
+    <nav aria-label="Navegación principal" class="hidden lg:flex flex-row gap-x-6 items-center">
+      <a href="#inicio" data-nav-link="inicio" data-i18n="nav.home" class="nav-link text-xs xl:text-sm font-bold uppercase tracking-wider text-white/85 hover:text-accent transition-colors duration-200">Inicio</a>
+      <a href="#sobre-mi" data-nav-link="sobre-mi" data-i18n="nav.about" class="nav-link text-xs xl:text-sm font-bold uppercase tracking-wider text-white/85 hover:text-accent transition-colors duration-200">Sobre mí</a>
+      <a href="#estudios" data-nav-link="estudios" data-i18n="nav.education" class="nav-link text-xs xl:text-sm font-bold uppercase tracking-wider text-white/85 hover:text-accent transition-colors duration-200">Estudios</a>
+      <a href="#habilidades" data-nav-link="habilidades" data-i18n="nav.skills" class="nav-link text-xs xl:text-sm font-bold uppercase tracking-wider text-white/85 hover:text-accent transition-colors duration-200">Stack</a>
+      <a href="#experiencia" data-nav-link="experiencia" data-i18n="nav.experience" class="nav-link text-xs xl:text-sm font-bold uppercase tracking-wider text-white/85 hover:text-accent transition-colors duration-200">Experiencia</a>
+      <a href="#proyectos" data-nav-link="proyectos" data-i18n="nav.projects" class="nav-link text-xs xl:text-sm font-bold uppercase tracking-wider text-white/85 hover:text-accent transition-colors duration-200">Proyectos</a>
+      <a href="#contacto" data-nav-link="contacto" data-i18n="nav.contact" class="nav-link text-xs xl:text-sm font-bold uppercase tracking-wider text-white/85 hover:text-accent transition-colors duration-200">Contacto</a>
+    </nav>
 
-      <!-- Language Switcher Toggle -->
+    <!-- Right Controls: Language Switcher + Mobile Hamburger -->
+    <div class="flex items-center gap-3 shrink-0">
       <div class="flex items-center bg-white/10 backdrop-blur-md p-1 rounded-full border border-white/15 text-xs font-bold shadow-inner">
         <button
           id="btn-lang-es"
           type="button"
-          aria-label="Cambiar a Español"
-          class="lang-btn px-3 py-1 rounded-full transition-all duration-300 bg-accent text-white shadow-sm font-bold cursor-pointer"
+          class="lang-btn px-3 py-1 rounded-full transition-colors duration-200 bg-accent text-white shadow-sm font-bold cursor-pointer"
           data-lang="es"
         >
           ES
@@ -33,37 +35,143 @@
         <button
           id="btn-lang-en"
           type="button"
-          aria-label="Switch to English"
-          class="lang-btn px-3 py-1 rounded-full transition-all duration-300 text-white/70 hover:text-white cursor-pointer"
+          class="lang-btn px-3 py-1 rounded-full transition-colors duration-200 text-white/70 hover:text-white cursor-pointer"
           data-lang="en"
         >
           EN
         </button>
       </div>
+
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-drawer"
+        class="lg:hidden inline-flex items-center justify-center size-11 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white transition-colors duration-200 cursor-pointer"
+      >
+        <svg id="menu-icon-open" class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+        <svg id="menu-icon-close" class="size-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div
+    id="mobile-drawer"
+    hidden
+    class="lg:hidden border-t border-white/10 bg-[#070908]/95 backdrop-blur-xl px-6 py-6 shadow-2xl"
+  >
+    <nav aria-label="Menú móvil" class="flex flex-col gap-1.5">
+      <a href="#inicio" data-mobile-link data-nav-link="inicio" data-i18n="nav.home" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-white/90 hover:text-accent hover:bg-white/[0.05] transition-colors">Inicio</a>
+      <a href="#sobre-mi" data-mobile-link data-nav-link="sobre-mi" data-i18n="nav.about" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-white/90 hover:text-accent hover:bg-white/[0.05] transition-colors">Sobre mí</a>
+      <a href="#estudios" data-mobile-link data-nav-link="estudios" data-i18n="nav.education" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-white/90 hover:text-accent hover:bg-white/[0.05] transition-colors">Estudios</a>
+      <a href="#habilidades" data-mobile-link data-nav-link="habilidades" data-i18n="nav.skills" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-white/90 hover:text-accent hover:bg-white/[0.05] transition-colors">Stack</a>
+      <a href="#experiencia" data-mobile-link data-nav-link="experiencia" data-i18n="nav.experience" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-white/90 hover:text-accent hover:bg-white/[0.05] transition-colors">Experiencia</a>
+      <a href="#proyectos" data-mobile-link data-nav-link="proyectos" data-i18n="nav.projects" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-white/90 hover:text-accent hover:bg-white/[0.05] transition-colors">Proyectos</a>
+      <a href="#contacto" data-mobile-link data-nav-link="contacto" data-i18n="nav.contact" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-white/90 hover:text-accent hover:bg-white/[0.05] transition-colors">Contacto</a>
+    </nav>
+
+    <div class="mt-5 pt-5 border-t border-white/10 flex flex-wrap gap-3">
+      <a
+        id="mobile-whatsapp-btn"
+        href={waUrlEs}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 flex-1 min-h-[44px] px-4 py-2.5 rounded-xl bg-accent text-white text-xs font-bold uppercase tracking-wider hover:bg-accent-hover transition-colors"
+      >
+        <span data-i18n="contact.wa_btn">Escríbeme por WhatsApp</span>
+      </a>
     </div>
   </div>
 </header>
 
 <script>
-  import { translations } from "../data/translations";
+  import { translations } from '../data/translations';
 
-  // Scroll effect on header
   const header = document.getElementById('main-header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header?.classList.remove('bg-transparent', 'py-5');
-      header?.classList.add('bg-[#111111]/95', 'backdrop-blur-md', 'py-4', 'shadow-lg');
-    } else {
-      header?.classList.add('bg-transparent', 'py-5');
-      header?.classList.remove('bg-[#111111]/95', 'backdrop-blur-md', 'py-4', 'shadow-lg');
-    }
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const drawer = document.getElementById('mobile-drawer');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  function setDrawerOpen(open: boolean) {
+    if (!drawer || !menuBtn) return;
+    drawer.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute(
+      'aria-label',
+      open ? (document.documentElement.lang === 'en' ? 'Close menu' : 'Cerrar menú') : (document.documentElement.lang === 'en' ? 'Open menu' : 'Abrir menú')
+    );
+    iconOpen?.classList.toggle('hidden', open);
+    iconClose?.classList.toggle('hidden', !open);
+  }
+
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = drawer ? !drawer.hidden : false;
+    setDrawerOpen(!isOpen);
   });
 
-  // Language switcher logic
+  document.querySelectorAll('[data-mobile-link]').forEach((link) => {
+    link.addEventListener('click', () => setDrawerOpen(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setDrawerOpen(false);
+  });
+
+  function updateHeaderScroll() {
+    if (!header) return;
+    if (window.scrollY > 40) {
+      header.classList.add('bg-[#070908]/80', 'backdrop-blur-xl', 'py-3.5', 'shadow-lg', 'border-white/10');
+      header.classList.remove('bg-transparent', 'py-5', 'border-transparent');
+    } else {
+      header.classList.remove('bg-[#070908]/80', 'backdrop-blur-xl', 'py-3.5', 'shadow-lg', 'border-white/10');
+      header.classList.add('bg-transparent', 'py-5', 'border-transparent');
+    }
+  }
+  window.addEventListener('scroll', updateHeaderScroll, { passive: true });
+  updateHeaderScroll();
+
+  // Active Section Scroll-Spy
+  const sectionIds = ['inicio', 'sobre-mi', 'estudios', 'habilidades', 'experiencia', 'proyectos', 'contacto'];
+  const navLinks = document.querySelectorAll<HTMLElement>('[data-nav-link]');
+
+  function setActiveNav(id: string) {
+    navLinks.forEach((el) => {
+      const match = el.getAttribute('data-nav-link') === id;
+      el.classList.toggle('text-accent', match);
+      el.classList.toggle('text-white/85', !match);
+    });
+  }
+
+  const spyObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.target.id) {
+          setActiveNav(entry.target.id);
+        }
+      });
+    },
+    { rootMargin: '-35% 0px -55% 0px', threshold: 0 }
+  );
+
+  sectionIds.forEach((id) => {
+    const sec = document.getElementById(id);
+    if (sec) spyObserver.observe(sec);
+  });
+
   function setLanguage(lang: 'es' | 'en') {
     try {
       localStorage.setItem('portfolio_lang', lang);
-    } catch (e) {}
+    } catch {}
 
     document.documentElement.lang = lang;
 
@@ -82,50 +190,50 @@
       btnEs?.classList.add('text-white/70');
     }
 
-    // Translate DOM elements with data-i18n
-    const elements = document.querySelectorAll<HTMLElement>('[data-i18n]');
-    elements.forEach((el) => {
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
       const key = el.getAttribute('data-i18n');
       if (key && translations[lang] && translations[lang][key]) {
         el.innerHTML = translations[lang][key];
       }
     });
 
-    // Update dynamic CV download button in Hero
-    const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     const heroCvBtn = document.getElementById('hero-cv-btn') as HTMLAnchorElement | null;
     if (heroCvBtn) {
-      if (lang === 'en') {
-        heroCvBtn.href = `${baseUrl}cv_en.pdf`;
-        heroCvBtn.setAttribute('download', 'Esteban_Munoz_CV_EN.pdf');
-      } else {
-        heroCvBtn.href = `${baseUrl}cv.pdf`;
-        heroCvBtn.setAttribute('download', 'Esteban_Munoz_CV_ES.pdf');
-      }
+      const rawBase = import.meta.env.BASE_URL || '/';
+      const baseUrl = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+      heroCvBtn.href = lang === 'en' ? `${baseUrl}cv_en.pdf` : `${baseUrl}cv.pdf`;
     }
+
+    const waHref =
+      lang === 'en'
+        ? 'https://wa.me/593983958430?text=Hi%20Esteban%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect.'
+        : 'https://wa.me/593983958430?text=Hola%20Esteban%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20contigo.';
+
+    ['contact-whatsapp-btn', 'social-whatsapp-link', 'mobile-whatsapp-btn'].forEach((id) => {
+      const el = document.getElementById(id) as HTMLAnchorElement | null;
+      if (el) el.href = waHref;
+    });
 
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
   }
 
-  function initLanguage() {
-    let savedLang: 'es' | 'en' = 'es';
+  function initHeaderI18n() {
     try {
       const stored = localStorage.getItem('portfolio_lang');
-      if (stored === 'es' || stored === 'en') {
-        savedLang = stored;
+      if (stored === 'en') {
+        setLanguage('en');
+      } else {
+        setLanguage('es');
       }
-    } catch (e) {}
-
-    setLanguage(savedLang);
+    } catch {}
 
     document.getElementById('btn-lang-es')?.addEventListener('click', () => setLanguage('es'));
     document.getElementById('btn-lang-en')?.addEventListener('click', () => setLanguage('en'));
   }
 
-  // Run on page load
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLanguage);
+    document.addEventListener('DOMContentLoaded', initHeaderI18n);
   } else {
-    initLanguage();
+    initHeaderI18n();
   }
 </script>

@@ -3,29 +3,55 @@ import ExperienceI from "./ExperienceI.astro"
 
 const EXPERIENCE = [
   {
+    title: "Desarrollador de Software Junior",
+    date: "Actualidad",
+    company: "ETRIEN S.A.S.",
+    description:
+      "Desarrollo y optimización de plataformas web corporativas, componentes frontend modulares, integración de APIs y arquitectura escalable orientada a procesos B2B.",
+    current: true,
+  },
+  {
     title: "Coordinador de Operaciones & Sistemas",
     date: "06/2024 - Presente",
     company: "MilamorTruck S.A",
-    description: "Logística operativa, facturación electrónica, conciliación de caja, gestión sistematizada de inventarios y soporte técnico interno.",
+    description:
+      "Logística operativa, facturación electrónica, conciliación de caja, gestión sistematizada de inventarios y soporte técnico interno.",
+    current: true,
   },
   {
     title: "Especialista en Cobranzas & Gestión Contractual",
     company: "Netlife / Megadatos S.A",
-    date: "09/2023 - 12/2024",
-    description: "Administración y depuración de bases de datos contractuales para clientes residenciales y corporativos, facturación recurrente y conciliación en CRM.",
+    date: "04/2023 - 12/2024",
+    description:
+      "Administración y depuración de bases de datos contractuales para clientes residenciales y corporativos, facturación recurrente y conciliación en CRM.",
+  },
+  {
+    title: "Pasante en Innovación & Comercial",
+    company: "Tracklink",
+    date: "02/2024 - 06/2024",
+    description:
+      "Contacto y seguimiento estratégico de leads, coordinación de reuniones comerciales, apoyo en campañas digitales y optimización de flujos de ventas.",
   },
   {
     title: "Asistente de Importaciones & Comercio",
-    date: "01/2022 – 06/2022",
+    date: "01/2022 - 06/2022",
     company: "Saix Services S.A.S",
-    description: "Búsqueda de información arancelaria, cotizaciones de importación, operaciones comerciales y soporte en marketing digital B2B.",
+    description:
+      "Búsqueda de información arancelaria, cotizaciones de importación, operaciones comerciales y soporte en marketing digital B2B.",
+  },
+  {
+    title: "Pasante de Operaciones & Archivo",
+    date: "06/2019 - 09/2019",
+    company: "Banco del Pacífico",
+    description:
+      "Auditoría documental, digitalización de expedientes financieros y pólizas bancarias, inventarios y soporte operativo en Talento Humano.",
   },
 ]
 ---
-<ol class="relative mt-16">
+<ol class="relative mt-12 border-l border-white/15 ml-2 sm:ml-4 space-y-6">
   {
     EXPERIENCE.map((experience, index) => (
-      <li>
+      <li class="relative pl-7 sm:pl-9">
         <ExperienceI index={index} {...experience} />
       </li>
     ))

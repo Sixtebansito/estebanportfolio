@@ -64,7 +64,7 @@ const CERTIFICATIONS = [
 ];
 ---
 
-<section id="estudios" class="relative py-28 px-6 bg-[#111111]/75 backdrop-blur-sm border-y border-white/5">
+<section id="estudios" class="scroll-mt-16 relative py-28 px-6 bg-transparent border-t border-white/5">
   <div class="max-w-7xl mx-auto">
     <div class="mb-14 reveal">
       <span class="glint-subheading" data-i18n="edu.sub">Formación Académica</span>
@@ -85,7 +85,7 @@ const CERTIFICATIONS = [
 
         {DEGREES.map((deg, idx) => (
           <article
-            class="reveal motion-card p-6 rounded-2xl bg-[#171716]/90 border border-white/10 shadow-lg"
+            class="reveal motion-card p-6 rounded-2xl bg-[#151514]/55 backdrop-blur-md border border-white/10 shadow-lg"
             style={`transition-delay: ${idx * 75}ms;`}
           >
             <div class="flex flex-wrap items-start justify-between gap-3 mb-2">
@@ -138,7 +138,7 @@ const CERTIFICATIONS = [
 
       <!-- Certifications Column -->
       <div class="lg:col-span-5">
-        <div class="p-6 rounded-2xl bg-[#171716]/90 border border-white/10 shadow-xl reveal" style="transition-delay: 120ms;">
+        <div class="p-6 rounded-2xl bg-[#151514]/55 backdrop-blur-md border border-white/10 shadow-xl reveal" style="transition-delay: 120ms;">
           <h3
             class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-5"
             data-i18n="edu.certs.heading"
@@ -149,7 +149,7 @@ const CERTIFICATIONS = [
           <ul class="space-y-3">
             {CERTIFICATIONS.map((cert, idx) => (
               <li
-                class="reveal motion-card flex items-center gap-4 p-3.5 rounded-xl bg-[#1f1e1c]/80 border border-white/8"
+                class="reveal motion-card flex items-center gap-4 p-3.5 rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/10"
                 style={`transition-delay: ${(idx + 1) * 65}ms;`}
               >
                 <span

@@ -1,0 +1,132 @@
+---
+interface SkillGroup {
+  key: string;
+  titleEs: string;
+  accentBg: string;
+  iconSvg: string;
+  items: { name: string; highlight?: boolean }[];
+}
+
+const SKILL_GROUPS: SkillGroup[] = [
+  {
+    key: "frontend",
+    titleEs: "Frontend & UI",
+    accentBg: "bg-accent/15 text-accent border-accent/30",
+    iconSvg: `<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>`,
+    items: [
+      { name: "React", highlight: true },
+      { name: "Astro", highlight: true },
+      { name: "TypeScript", highlight: true },
+      { name: "JavaScript (ES6+)" },
+      { name: "Tailwind CSS" },
+      { name: "HTML5 / CSS3" },
+      { name: "UI/UX Responsivo" },
+    ],
+  },
+  {
+    key: "backend",
+    titleEs: "Backend & APIs",
+    accentBg: "bg-emerald-500/15 text-emerald-300 border-emerald-400/30",
+    iconSvg: `<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="7" rx="2" /><rect x="2" y="14" width="20" height="7" rx="2" /><line x1="6" y1="6.5" x2="6.01" y2="6.5" /><line x1="6" y1="17.5" x2="6.01" y2="17.5" /></svg>`,
+    items: [
+      { name: "Python", highlight: true },
+      { name: "Django", highlight: true },
+      { name: "Node.js", highlight: true },
+      { name: "Express.js" },
+      { name: "RESTful APIs" },
+      { name: "JWT Auth" },
+      { name: "Microservicios" },
+    ],
+  },
+  {
+    key: "cloud",
+    titleEs: "Cloud & DevOps",
+    accentBg: "bg-sky-500/15 text-sky-300 border-sky-400/30",
+    iconSvg: `<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" /></svg>`,
+    items: [
+      { name: "Microsoft Azure", highlight: true },
+      { name: "Google Cloud", highlight: true },
+      { name: "IBM Cloud" },
+      { name: "Docker" },
+      { name: "Kubernetes / OpenShift" },
+      { name: "Git & GitHub" },
+      { name: "Vercel & CI/CD" },
+    ],
+  },
+  {
+    key: "data",
+    titleEs: "Bases de Datos & Gestión",
+    accentBg: "bg-amber-500/15 text-amber-300 border-amber-400/30",
+    iconSvg: `<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5v14a9 3 0 0 0 18 0V5" /><path d="M3 12a9 3 0 0 0 18 0" /></svg>`,
+    items: [
+      { name: "SQL / MySQL", highlight: true },
+      { name: "MongoDB" },
+      { name: "Firebase" },
+      { name: "Pandas / Scikit-Learn" },
+      { name: "Postman" },
+      { name: "Scrum / Agile", highlight: true },
+      { name: "CRM & B2B Ops" },
+    ],
+  },
+];
+---
+
+<section id="habilidades" class="scroll-mt-16 relative py-28 px-6 bg-transparent border-t border-white/5">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6 reveal">
+      <div>
+        <span class="glint-subheading" data-i18n="skills.sub">Stack Tecnológico</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mt-2" data-i18n="skills.title">
+          Herramientas con las que <span class="text-accent">construyo.</span>
+        </h2>
+      </div>
+      <p class="text-gray-400 max-w-md text-sm md:text-base leading-relaxed" data-i18n="skills.lead">
+        Arquitectura full-stack, despliegue en la nube y visión de negocio para entregar software rápido, seguro y mantenible.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {SKILL_GROUPS.map((group, gIndex) => (
+        <article
+          class="reveal motion-card rounded-2xl bg-[#151514]/55 backdrop-blur-md border border-white/10 p-6 sm:p-7 shadow-xl"
+          style={`transition-delay: ${gIndex * 85}ms;`}
+        >
+          <div class="flex items-center justify-between gap-4 mb-5">
+            <div class="flex items-center gap-3.5">
+              <div class={`size-10 rounded-xl border flex items-center justify-center ${group.accentBg}`}>
+                <Fragment set:html={group.iconSvg} />
+              </div>
+              <div>
+                <h3
+                  class="text-lg sm:text-xl font-bold text-white"
+                  data-i18n={`skills.${group.key}.title`}
+                >
+                  {group.titleEs}
+                </h3>
+                <span class="text-[11px] uppercase tracking-widest text-gray-400 font-semibold" data-i18n={`skills.${group.key}.sub`}>
+                  {group.items.length} tecnologías
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2.5">
+            {group.items.map((item, iIndex) => (
+              <span
+                class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-[transform,border-color,background-color] duration-200 hover:-translate-y-0.5 ${
+                  item.highlight
+                    ? "bg-accent/15 text-white border-accent/35 hover:border-accent hover:bg-accent/25"
+                    : "bg-white/[0.04] text-gray-300 border-white/10 hover:border-white/25 hover:text-white"
+                }`}
+                style={`transition-delay: ${(iIndex % 4) * 20}ms;`}
+              >
+                {item.highlight && <span class="size-1.5 rounded-full bg-accent"></span>}
+                {item.name}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

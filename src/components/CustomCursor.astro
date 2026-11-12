@@ -1,0 +1,252 @@
+<!-- Custom Interactive Emerald Precision Pointer & Click Sparks (Desktop fine-pointer only) -->
+<div id="custom-cursor-layer" aria-hidden="true" class="hidden pointer-events-none fixed inset-0 z-[9999]">
+  <canvas id="cursor-sparks" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+  <div id="cursor-ring" class="custom-cursor-ring">
+    <span class="custom-cursor-tick custom-cursor-tick-n"></span>
+    <span class="custom-cursor-tick custom-cursor-tick-s"></span>
+    <span class="custom-cursor-tick custom-cursor-tick-e"></span>
+    <span class="custom-cursor-tick custom-cursor-tick-w"></span>
+  </div>
+  <div id="cursor-dot" class="custom-cursor-dot"></div>
+</div>
+
+<style is:global>
+  @media (pointer: coarse), (hover: none), (prefers-reduced-motion: reduce) {
+    #custom-cursor-layer {
+      display: none !important;
+    }
+  }
+
+  @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    html.has-custom-cursor,
+    html.has-custom-cursor * {
+      cursor: none !important;
+    }
+
+    .custom-cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      margin: -4px 0 0 -4px;
+      border-radius: 9999px;
+      background: #4ade80;
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.9), 0 0 2px #ffffff;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 150ms ease, background-color 150ms ease;
+      will-change: transform;
+    }
+
+    .custom-cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 34px;
+      height: 34px;
+      margin: -17px 0 0 -17px;
+      border-radius: 9999px;
+      border: 1.5px solid rgba(74, 222, 128, 0.6);
+      background: rgba(57, 181, 74, 0.04);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 180ms ease, border-color 180ms ease, background-color 180ms ease, border-radius 180ms ease;
+      will-change: transform;
+    }
+
+    .custom-cursor-tick {
+      position: absolute;
+      background: rgba(74, 222, 128, 0.85);
+      transition: opacity 160ms ease, transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0.45;
+    }
+    .custom-cursor-tick-n { width: 1.5px; height: 5px; top: -3px; left: 50%; transform: translateX(-50%); }
+    .custom-cursor-tick-s { width: 1.5px; height: 5px; bottom: -3px; left: 50%; transform: translateX(-50%); }
+    .custom-cursor-tick-e { width: 5px; height: 1.5px; right: -3px; top: 50%; transform: translateY(-50%); }
+    .custom-cursor-tick-w { width: 5px; height: 1.5px; left: -3px; top: 50%; transform: translateY(-50%); }
+
+    #custom-cursor-layer.is-visible .custom-cursor-dot,
+    #custom-cursor-layer.is-visible .custom-cursor-ring {
+      opacity: 1;
+    }
+
+    #custom-cursor-layer.is-interactive .custom-cursor-ring {
+      border-color: rgba(74, 222, 128, 0.95);
+      background: rgba(57, 181, 74, 0.14);
+      box-shadow: 0 0 20px rgba(57, 181, 74, 0.25);
+    }
+
+    #custom-cursor-layer.is-interactive .custom-cursor-tick {
+      opacity: 1;
+    }
+
+    #custom-cursor-layer.is-card .custom-cursor-ring {
+      border-color: rgba(74, 222, 128, 0.75);
+      background: rgba(57, 181, 74, 0.08);
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const canCustom =
+      window.matchMedia('(pointer: fine)').matches &&
+      window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    if (!canCustom) return;
+
+    const layer = document.getElementById('custom-cursor-layer');
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    const sparksCanvas = document.getElementById('cursor-sparks');
+    if (!(layer && dot && ring && sparksCanvas instanceof HTMLCanvasElement)) return;
+
+    const sctx = sparksCanvas.getContext('2d');
+    if (!sctx) return;
+
+    let dpr = 1;
+    let cw = 0;
+    let ch = 0;
+
+    function resizeSparks() {
+      cw = window.innerWidth;
+      ch = window.innerHeight;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      sparksCanvas.width = Math.floor(cw * dpr);
+      sparksCanvas.height = Math.floor(ch * dpr);
+      sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resizeSparks();
+    window.addEventListener('resize', resizeSparks, { passive: true });
+
+    let activated = false;
+    let mouseX = -100;
+    let mouseY = -100;
+    let ringX = -100;
+    let ringY = -100;
+    let targetScale = 1;
+    let currentScale = 1;
+    let ringAngle = 0;
+    let targetAngle = 0;
+    let isPressed = false;
+    const sparks = [];
+
+    function spawnSparks(x, y) {
+      const count = 7;
+      for (let i = 0; i < count; i++) {
+        const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.45;
+        const speed = 1.9 + Math.random() * 2.4;
+        sparks.push({
+          x,
+          y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 0,
+          maxLife: 24 + Math.floor(Math.random() * 8),
+          size: 1.6 + Math.random() * 1.4,
+          green: i % 2 === 0,
+        });
+      }
+    }
+
+    function updateHoverState(target) {
+      if (!(target instanceof Element)) return;
+      const interactive = target.closest('a, button, [role="button"], .motion-btn');
+      const card = target.closest('.motion-card');
+      layer.classList.toggle('is-interactive', Boolean(interactive));
+      layer.classList.toggle('is-card', Boolean(card) && !interactive);
+
+      if (interactive) {
+        targetScale = isPressed ? 0.9 : 1.45;
+        targetAngle = 45;
+      } else if (card) {
+        targetScale = isPressed ? 0.92 : 1.65;
+        targetAngle = 0;
+      } else {
+        targetScale = isPressed ? 0.78 : 1;
+        targetAngle = 0;
+      }
+    }
+
+    function loop() {
+      ringX += (mouseX - ringX) * 0.2;
+      ringY += (mouseY - ringY) * 0.2;
+      currentScale += (targetScale - currentScale) * 0.22;
+      ringAngle += (targetAngle - ringAngle) * 0.16;
+
+      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) scale(${isPressed ? 0.75 : 1})`;
+      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${currentScale}) rotate(${ringAngle}deg)`;
+
+      if (sparks.length > 0) {
+        sctx.clearRect(0, 0, cw, ch);
+        for (let i = sparks.length - 1; i >= 0; i--) {
+          const p = sparks[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vx *= 0.92;
+          p.vy *= 0.92;
+          p.life += 1;
+          const alpha = Math.max(0, 1 - p.life / p.maxLife);
+          sctx.beginPath();
+          sctx.arc(p.x, p.y, p.size * (0.4 + 0.6 * alpha), 0, Math.PI * 2);
+          sctx.fillStyle = p.green
+            ? `rgba(74, 222, 128, ${alpha})`
+            : `rgba(255, 255, 255, ${alpha * 0.9})`;
+          sctx.fill();
+          if (p.life >= p.maxLife) sparks.splice(i, 1);
+        }
+      } else {
+        sctx.clearRect(0, 0, cw, ch);
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    window.addEventListener(
+      'pointermove',
+      (e) => {
+        if (e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!activated) {
+          activated = true;
+          ringX = mouseX;
+          ringY = mouseY;
+          layer.classList.remove('hidden');
+          layer.classList.add('is-visible');
+          document.documentElement.classList.add('has-custom-cursor');
+          requestAnimationFrame(loop);
+        } else {
+          layer.classList.add('is-visible');
+        }
+        updateHoverState(e.target);
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      'pointerdown',
+      (e) => {
+        if (e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
+        isPressed = true;
+        updateHoverState(e.target);
+        if (activated) spawnSparks(e.clientX, e.clientY);
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      'pointerup',
+      (e) => {
+        if (e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
+        isPressed = false;
+        updateHoverState(e.target);
+      },
+      { passive: true }
+    );
+
+    document.documentElement.addEventListener('mouseleave', () => {
+      layer.classList.remove('is-visible');
+    });
+  })();
+</script>

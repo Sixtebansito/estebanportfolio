@@ -1,20 +1,36 @@
 ---
-const currentYear = new Date().getFullYear()
+const waUrl =
+  "https://wa.me/593983958430?text=Hola%20Esteban%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20contigo."
 ---
 
-<footer class="w-full border-t border-white/10 bg-[#0b0b0b]/90 py-10 px-6 mt-8">
-  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-    <span class="text-sm text-gray-400 text-center sm:text-left">
-      &copy; {currentYear}
-      <a href="#inicio" class="hover:underline text-accent font-medium">Esteban Muñoz</a>.
+<footer class="w-full border-t border-white/10 bg-[#070908]/45 backdrop-blur-md py-10 px-6 mt-8">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+    <p class="text-center sm:text-left">
+      © {new Date().getFullYear()}{" "}
+      <a href="#inicio" class="text-accent hover:underline font-semibold">Esteban Muñoz</a>.{" "}
       <span data-i18n="footer.rights">Casi todos los derechos reservados</span>
-    </span>
-    <ul class="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-300">
+    </p>
+
+    <ul class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 font-medium">
       <li>
-        <a href="#sobre-mi" data-i18n="footer.about" class="hover:text-accent transition-colors duration-200">Sobre mí</a>
+        <a href="#sobre-mi" data-i18n="footer.about" class="hover:text-accent transition-colors duration-200">
+          Sobre mí
+        </a>
       </li>
       <li>
-        <a href="#estudios" data-i18n="nav.education" class="hover:text-accent transition-colors duration-200">Estudios</a>
+        <a href="#estudios" data-i18n="nav.education" class="hover:text-accent transition-colors duration-200">
+          Estudios
+        </a>
+      </li>
+      <li>
+        <a href="#habilidades" data-i18n="nav.skills" class="hover:text-accent transition-colors duration-200">
+          Stack
+        </a>
+      </li>
+      <li>
+        <a href={waUrl} target="_blank" rel="noopener noreferrer" class="text-accent hover:underline transition-colors duration-200">
+          WhatsApp
+        </a>
       </li>
       <li>
         <a id="contacto-footer" href="mailto:dannygghhm@gmail.com" data-i18n="footer.contact" class="hover:text-accent transition-colors duration-200">
